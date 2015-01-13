@@ -17067,28 +17067,28 @@ obj || (obj = {});
 var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
 function print() { __p += __j.call(arguments, '') }
 with (obj) {
-__p += '  <iframe width="560" height="315" src="' +
+__p += '  <div class="card card-detail">\n\n    <div class="close-card"></div>\n\n  <iframe width="560" height="315" src="' +
 ((__t = ( trailerlink )) == null ? '' : __t) +
-'" frameborder="0" allowfullscreen></iframe>\n  <div class="card card-detail">\n    <div class="close-card"></div>\n\n    <h2 class="card-back-header">' +
+'" frameborder="0" allowfullscreen></iframe>\n\n    <h2 class="card-back-header">' +
 ((__t = ( movietitle )) == null ? '' : __t) +
-' </h2>\n    ' +
+' </h2>\n    <p class="summary">' +
 ((__t = ( summary )) == null ? '' : __t) +
-'\n    \n    <a href="' +
+'</p>\n    \n    <a href="' +
 ((__t = ( usatodayreview )) == null ? '' : __t) +
 '" class="read-more-link" target="_blank">Learn more</a>\n    <div id="social">\n\n      ';
  
       var encodedURL = encodeURIComponent(window.location.href);
       var redirectUrl = "http://www.gannett-cdn.com/experiments/usatoday/_common/_dialogs/fb-share-done.html";
-      var encodedURL2 = encodeURI("http://www.gannett-cdn.com/experiments/usatoday/2014/10/ebola-questions/%23" + rowNumber);
+      var encodedURL2 = encodeURI(window.location.href + "/%23" + rowNumber);
       var encodedStr = encodeURIComponent("Top Ebola virus questions answered: " + movietitle);
       var encodedTitle = encodeURIComponent("Top Ebola virus questions answered");
       var encodedQuestion = encodeURIComponent(movietitle);
       var fbRedirectUrl = encodeURIComponent("http://www.gannett-cdn.com/usatoday/_common/_dialogs/fb-share-done.html");
 
       var tweetUrl = "https://twitter.com/intent/tweet?url=" + encodedURL + "&text=" + encodedStr + "&via=USATODAY"; 
-      var fbUrl = "javascript: var sTop=window.screen.height/2-(218);var sLeft=window.screen.width/2-(313);window.open('https://www.facebook.com/dialog/feed?display=popup&app_id=215046668549694&link=" + encodedURL2 + "&picture=http://www.gannett-cdn.com/experiments/usatoday/2014/10/ebola-questions/img/fb-post.jpg&name=" + encodedTitle + "&description=" + encodedQuestion + "&redirect_uri=http://www.gannett-cdn.com/usatoday/_common/_dialogs/fb-share-done.html','sharer','toolbar=0,status=0,width=580,height=400,top='+sTop+',left='+sLeft);Analytics.click('Facebook share');void(0);";
+      var fbUrl = "javascript: var sTop=window.screen.height/2-(218);var sLeft=window.screen.width/2-(313);window.open('https://www.facebook.com/dialog/feed?display=popup&app_id=215046668549694&link=" + encodedURL2 + "&picture=" + basepath + "fb-post.jpg&name=" + encodedTitle + "&description=" + encodedQuestion + "&redirect_uri=http://www.gannett-cdn.com/usatoday/_common/_dialogs/fb-share-done.html','sharer','toolbar=0,status=0,width=580,height=400,top='+sTop+',left='+sLeft);Analytics.click('Facebook share');void(0);";
 
-      var fb2 = "javascript: var sTop=window.screen.height/2-(218);var sLeft=window.screen.width/2-(313);window.open('https://www.facebook.com/dialog/feed?display=popup&app_id=215046668549694&link=" + encodedURL2 + "&picture=http://www.gannett-cdn.com/experiments/usatoday/2014/10/ebola-questions/img/fb-post.jpg&name=" + encodedTitle +"&description=" + "" + "&redirect_uri="+ redirectUrl + "','sharer','toolbar=0,status=0,width=580,height=400,top='+sTop+',left='+sLeft);Analytics.click('Facebook share');void(0);";
+      var fb2 = "javascript: var sTop=window.screen.height/2-(218);var sLeft=window.screen.width/2-(313);window.open('https://www.facebook.com/dialog/feed?display=popup&app_id=215046668549694&link=" + encodedURL2 + "&picture=" + basepath + "fb-post.jpg&name=" + encodedTitle +"&description=" + "" + "&redirect_uri="+ redirectUrl + "','sharer','toolbar=0,status=0,width=580,height=400,top='+sTop+',left='+sLeft);Analytics.click('Facebook share');void(0);";
 
       var emailURL = "mailto:?body=" + encodedQuestion +  "%0d%0d" + encodedURL +"&subject=" + encodedTitle;
       ;
@@ -17343,7 +17343,7 @@ define('app',[
 
     initialize: function() {
 
-      app.router.navigate("questions/" + this.model.get("rowNumber"));
+      app.router.navigate("movie/" + this.model.get("rowNumber"));
       this.listenTo(this.model, 'change', this.removeCard);
     },
     render: function() {
@@ -17369,7 +17369,7 @@ define('app',[
         
         $(".modal-overlay").removeClass("show");
         this.$el.removeClass("modal-show");
-        _.defer(function() { app.router.navigate("questions"); });
+        _.defer(function() { app.router.navigate("movie"); });
         this.stopListening();
       }
       
@@ -17387,7 +17387,7 @@ define('app',[
 
     routes: {
       "": "home",
-      "questions/:id":                 "highlight",    // #/1
+      "movie/:id":                 "highlight",    // #/1
       
     },
 

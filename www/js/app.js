@@ -181,7 +181,7 @@ define([
 
     initialize: function() {
 
-      app.router.navigate("questions/" + this.model.get("rowNumber"));
+      app.router.navigate("movie/" + this.model.get("rowNumber"));
       this.listenTo(this.model, 'change', this.removeCard);
     },
     render: function() {
@@ -207,7 +207,7 @@ define([
         
         $(".modal-overlay").removeClass("show");
         this.$el.removeClass("modal-show");
-        _.defer(function() { app.router.navigate("questions"); });
+        _.defer(function() { app.router.navigate("movie"); });
         this.stopListening();
       }
       
@@ -225,7 +225,7 @@ define([
 
     routes: {
       "": "home",
-      "questions/:id":                 "highlight",    // #/1
+      "movie/:id":                 "highlight",    // #/1
       
     },
 
