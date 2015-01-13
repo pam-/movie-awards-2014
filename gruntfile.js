@@ -169,6 +169,7 @@ module.exports = function(grunt) {
             "analytics": "lib/analytics",
             "mobile_detect": "lib/mobile-detect",
             "d3": '../../bower_components/d3/d3',
+            "isotope": "../../bower_components/isotope/dist/isotope.pkgd",
             "mapbox": '../../bower_components/mapbox.js/mapbox.uncompressed'
               // "api/ads": "api/ads",
               // "api/analytics": "api/analytics"
@@ -181,10 +182,16 @@ module.exports = function(grunt) {
             'underscore': {
               "exports": '_'
             },
+            "jquery_ui": {
+              "deps": [
+                "jquery"
+              ],
+              "exports": "jQuery"
+            },
             "jquery_ui_touch_punch": {
               "deps": [
-                "jquery",
-                "jquery_ui"
+                "jquery"
+                // "jquery_ui"
               ],
               "exports": "jQuery"
             }
@@ -221,6 +228,7 @@ module.exports = function(grunt) {
             "analytics": "lib/analytics",
             "mobile_detect": "lib/mobile-detect",
             "d3": '../../bower_components/d3/d3',
+            "isotope": "../../bower_components/isotope/dist/isotope.pkgd",
             "mapbox": '../../bower_components/mapbox.js/mapbox.uncompressed'
               // "api/ads": "api/ads",
               // "api/analytics": "api/analytics"

@@ -1,19 +1,19 @@
 
   <div class="card card-detail">
     <div class="close-card"></div>
-    <h2 class="card-back-header"><%= question %> </h2>
-    <%= answer %>
+    <h2 class="card-back-header"><%= movietitle %> </h2>
+    <%= summary %>
     
-    <a href="<%= link %>" class="read-more-link" target="_blank">Learn more</a>
+    <a href="<%= usatodayreview %>" class="read-more-link" target="_blank">Learn more</a>
     <div id="social">
 
       <% 
       var encodedURL = encodeURIComponent(window.location.href);
       var redirectUrl = "http://www.gannett-cdn.com/experiments/usatoday/_common/_dialogs/fb-share-done.html";
       var encodedURL2 = encodeURI("http://www.gannett-cdn.com/experiments/usatoday/2014/10/ebola-questions/%23" + rowNumber);
-      var encodedStr = encodeURIComponent("Top Ebola virus questions answered: " + question);
+      var encodedStr = encodeURIComponent("Top Ebola virus questions answered: " + movietitle);
       var encodedTitle = encodeURIComponent("Top Ebola virus questions answered");
-      var encodedQuestion = encodeURIComponent(question);
+      var encodedQuestion = encodeURIComponent(movietitle);
       var fbRedirectUrl = encodeURIComponent("http://www.gannett-cdn.com/usatoday/_common/_dialogs/fb-share-done.html");
 
       var tweetUrl = "https://twitter.com/intent/tweet?url=" + encodedURL + "&text=" + encodedStr + "&via=USATODAY"; 

@@ -19,13 +19,14 @@ console.log("Getting updated data...");
   function showInfo(data, tabletop) {
 
     //format data
-    
+    for (var i = 0; i < data.length; i++) {
+      var entry = data[i];
 
-    //initialize the app
-    // matchGameObj.celebsInit();
-    // console.log(celebData);
+      entry.categories = entry.categories.split(", ");
+      data[i] = entry;
+    }    
 
-    fs.writeFile('js/data.json', JSON.stringify(data), function (err) {
+    fs.writeFile('src/js/data.json', JSON.stringify(data), function (err) {
       if (err) throw err;
       console.log('Updated!');
     });

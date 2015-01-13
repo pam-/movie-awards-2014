@@ -8,19 +8,19 @@ var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
 function print() { __p += __j.call(arguments, '') }
 with (obj) {
 __p += '\n  <div class="card card-detail">\n    <div class="close-card"></div>\n    <h2 class="card-back-header">' +
-((__t = ( question )) == null ? '' : __t) +
+((__t = ( movietitle )) == null ? '' : __t) +
 ' </h2>\n    ' +
-((__t = ( answer )) == null ? '' : __t) +
+((__t = ( summary )) == null ? '' : __t) +
 '\n    \n    <a href="' +
-((__t = ( link )) == null ? '' : __t) +
+((__t = ( usatodayreview )) == null ? '' : __t) +
 '" class="read-more-link" target="_blank">Learn more</a>\n    <div id="social">\n\n      ';
  
       var encodedURL = encodeURIComponent(window.location.href);
       var redirectUrl = "http://www.gannett-cdn.com/experiments/usatoday/_common/_dialogs/fb-share-done.html";
       var encodedURL2 = encodeURI("http://www.gannett-cdn.com/experiments/usatoday/2014/10/ebola-questions/%23" + rowNumber);
-      var encodedStr = encodeURIComponent("Top Ebola virus questions answered: " + question);
+      var encodedStr = encodeURIComponent("Top Ebola virus questions answered: " + movietitle);
       var encodedTitle = encodeURIComponent("Top Ebola virus questions answered");
-      var encodedQuestion = encodeURIComponent(question);
+      var encodedQuestion = encodeURIComponent(movietitle);
       var fbRedirectUrl = encodeURIComponent("http://www.gannett-cdn.com/usatoday/_common/_dialogs/fb-share-done.html");
 
       var tweetUrl = "https://twitter.com/intent/tweet?url=" + encodedURL + "&text=" + encodedStr + "&via=USATODAY"; 
@@ -47,7 +47,7 @@ obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
 __p += '   <div class="category-bar">\n  \n   </div>\n  <h2 class="card-question">' +
-((__t = ( question )) == null ? '' : __t) +
+((__t = ( movietitle )) == null ? '' : __t) +
 '</h2>\n';
 
 }

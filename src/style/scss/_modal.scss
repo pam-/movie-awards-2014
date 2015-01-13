@@ -21,6 +21,7 @@
   position: static;
   // transform-style: preserve-3d;
   // transform: rotateY(-70deg);
+  transform: translate(0, -100%);
   transition: all 0.3s ease;
   width: 100%;
   opacity: 0;
@@ -28,6 +29,7 @@
 
 .modal-show .card-detail {
   // transform: rotateY(0deg);
+  transform: translate(0, 0);
   opacity: 1;
 
 

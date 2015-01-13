@@ -1,12 +1,13 @@
 define([
   'jquery',
+  'isotope',
   'analytics',
   'underscore',
   'backbone',
   'templates',
-  'collections/movies',
-  'jquery_ui_touch_punch'
-  ], function(jQuery, Analytics, _, Backbone, templates, moviesCollection) {
+  'collections/movies'
+  // 'jquery_ui_touch_punch'
+  ], function(jQuery, Isotope, Analytics, _, Backbone, templates, moviesCollection) {
 
 
   var app = app || {};
@@ -43,14 +44,22 @@ define([
     addOne: function(question) {
 
       var view = new app.views.QuestionCard({model: question});
-      $("#card-wrap").append(view.render().el);
+      this.$cardWrap.append(view.render().el);
     },
+
+    $cardWrap: $("#card-wrap"),
 
     addAll: function() {
 
-      Backbone.history.start();
+      this.$cardWrap.empty();
       app.collections.questions.each(this.addOne, this);
-      this.addTimeStamp();
+      this.iso = new Isotope("#card-wrap", {
+        itemSelector: '.card',
+        layoutMode: 'fitRows'
+      });
+      console.log(this.iso);
+      // this.iso.arrange({filter: ".test"});
+      // this.addTimeStamp();
     },
 
     removeHighlight: function() {
@@ -58,8 +67,27 @@ define([
       app.views.detailView.model.set({"highlight": false});
     },
     addTimeStamp: function() {
-        var objData = app.collections.questions.toJSON();
-        this.$el.find(".time-stamp").html(objData[0].timestamp);
+      var objData = app.collections.questions.toJSON();
+      this.$el.find(".time-stamp").html(objData[0].timestamp);
+    },
+
+    filterItems: function(tagArray) {
+      var filteredCollection = app.collections.questions.filter(function(model) {
+        var result;
+
+        _.each(tagArray, function(tag) {
+          if (_.contains(model.get("categories"), tag)){
+            result = true;
+          }
+        });
+
+        return result;
+      });
+
+      this.$cardWrap.empty();
+      _.each(filteredCollection, function(item) {
+        this.addOne(item);
+      }, this);
     }
   });
 
@@ -69,7 +97,14 @@ define([
   app.views.QuestionCard = Backbone.View.extend({
     tagName: "div",
 
-    className: "card small-card",
+    className: function() {
+      var categories = this.model.get("categories");
+      var classes = "card small-card";
+      _.each(categories, function(category) {
+        classes += (" " + category);
+      });
+      return classes;
+    },
 
     events: {
       "click": "setHighlight"
@@ -79,6 +114,7 @@ define([
 
     initialize: function() {
       this.listenTo(this.model, 'change', this.showDetail);
+      
     },
 
     render: function() {
@@ -165,7 +201,8 @@ define([
 
   });
 
-
+  
+    
   app.Router = Backbone.Router.extend({
 
     routes: {
@@ -175,6 +212,12 @@ define([
     },
 
     home: function() {
+
+
+        
+
+
+      
 
        var highlightModel = _.find(app.collections.questions.models, function(model) {
         
@@ -187,7 +230,11 @@ define([
     },
 
     highlight: function(id) {
-      var detailModel = _.find(app.collections.questions.models, function(model) {
+
+      console.log(app.collections.questions);
+      _.defer(function() {
+        console.log(app.collections.questions);
+        var detailModel = _.find(app.collections.questions.models, function(model) {
         
         return model.get("rowNumber") == id;
       });
@@ -196,6 +243,9 @@ define([
 
         $(".page-wrap").append(app.views.detailView.render().el);
         app.views.detailView.postRender(app.views.detailView.render().$el);
+
+      })
+      
     }
 
   });
@@ -204,10 +254,13 @@ define([
 
 
   app.init = function() {
-    // Create our global collection of **questions**.
-    app.collections.questions = new moviesCollection();
-    app.router = new app.Router();
+
+    app.collections.questions = new moviesCollection(); 
     app.views.appView = new app.views.AppView();
+    app.router = new app.Router();
+    Backbone.history.start();
+    
+    
   };
 
   return app;

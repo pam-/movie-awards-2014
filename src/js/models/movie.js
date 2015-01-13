@@ -8,7 +8,7 @@ define([
       highlight: false
     }, 
     initialize: function() {
-      this.attributes.category = this.attributes.category.split(", ");
+      // this.attributes.category = this.attributes.category.split(", ");
     }
   });
 })
