@@ -1,0 +1,14 @@
+
+main.js
+----------------
+jquery.js
+lib/analytics.js
+underscore.js
+backbone.js
+templates.js
+models/movie.js
+collections/movies.js
+lib/jquery-ui.min.js
+lib/jquery.ui.touch-punch.min.js
+app.js
+main.js
