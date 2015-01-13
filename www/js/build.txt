@@ -2,6 +2,7 @@
 main.js
 ----------------
 jquery.js
+imagesloaded.js
 isotope.js
 lib/analytics.js
 underscore.js

@@ -7,7 +7,9 @@ obj || (obj = {});
 var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
 function print() { __p += __j.call(arguments, '') }
 with (obj) {
-__p += '\n  <div class="card card-detail">\n    <div class="close-card"></div>\n    <h2 class="card-back-header">' +
+__p += '  <iframe width="560" height="315" src="' +
+((__t = ( trailerlink )) == null ? '' : __t) +
+'" frameborder="0" allowfullscreen></iframe>\n  <div class="card card-detail">\n    <div class="close-card"></div>\n\n    <h2 class="card-back-header">' +
 ((__t = ( movietitle )) == null ? '' : __t) +
 ' </h2>\n    ' +
 ((__t = ( summary )) == null ? '' : __t) +
@@ -44,11 +46,16 @@ return __p
 
 this["JST"]["card-front.html"] = function(obj) {
 obj || (obj = {});
-var __t, __p = '', __e = _.escape;
+var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
+function print() { __p += __j.call(arguments, '') }
 with (obj) {
-__p += '   <div class="category-bar">\n  \n   </div>\n  <h2 class="card-question">' +
+__p += '   <div class="category-bar">\n  \n   </div>\n   <div class="title-overlay"><h2>' +
 ((__t = ( movietitle )) == null ? '' : __t) +
-'</h2>\n';
+'</h2></div>\n  <img class="cover-img" src="';
+ print(basepath + photoname) ;
+__p += '" alt="' +
+((__t = ( movietitle)) == null ? '' : __t) +
+'">\n';
 
 }
 return __p

@@ -18,11 +18,12 @@
   p {
       font-family: "Futura Today Light", Arial, sans-serif;
     }
+  padding: 2em;
   position: static;
   // transform-style: preserve-3d;
   // transform: rotateY(-70deg);
   transform: translate(0, -100%);
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
   width: 100%;
   opacity: 0;
 }
@@ -75,7 +76,7 @@
     &.show {
       opacity: 1;
     visibility: visible;
-    transition: all 0.3s;
+    transition: all 0.5s;
     }
 }
 

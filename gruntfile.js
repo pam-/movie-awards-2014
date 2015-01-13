@@ -170,6 +170,7 @@ module.exports = function(grunt) {
             "mobile_detect": "lib/mobile-detect",
             "d3": '../../bower_components/d3/d3',
             "isotope": "../../bower_components/isotope/dist/isotope.pkgd",
+            "imagesloaded": "../../bower_components/imagesloaded/imagesloaded.pkgd",
             "mapbox": '../../bower_components/mapbox.js/mapbox.uncompressed'
               // "api/ads": "api/ads",
               // "api/analytics": "api/analytics"
@@ -229,6 +230,7 @@ module.exports = function(grunt) {
             "mobile_detect": "lib/mobile-detect",
             "d3": '../../bower_components/d3/d3',
             "isotope": "../../bower_components/isotope/dist/isotope.pkgd",
+            "imagesloaded": "../../bower_components/imagesloaded/imagesloaded.pkgd",
             "mapbox": '../../bower_components/mapbox.js/mapbox.uncompressed'
               // "api/ads": "api/ads",
               // "api/analytics": "api/analytics"

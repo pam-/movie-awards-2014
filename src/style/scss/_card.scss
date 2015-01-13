@@ -3,7 +3,7 @@
   box-shadow: $shadow-standard;
 
   margin: 0 auto 2em auto;
-  padding: 2em;
+  // padding: 2em;
   // position: static;
   transition: transform 800ms ease;
   
@@ -24,7 +24,7 @@
       transition: transform 800ms ease;
     }
     @media(max-width: 800px) {
-      padding: 4em 2em;
+      // padding: 4em 2em;
     }
 }
 
@@ -60,17 +60,25 @@
 .small-card {
   cursor: pointer;
   float: left;
-  height: 150px;
+  height: auto;
   margin-bottom: 10px;
   margin-right: 10px;
   max-width: 100%;
   position: relative;
   text-align: center;
   transition: transform 200ms ease;
-  width: 350px;
+  width: calc(25% - 10px);
   &:hover {
     transform: translate(0, 5px);
     transition: transform 200ms ease;
+  }
+
+  @media (max-width: 900px) {
+    width: calc(33% - 10px);
+  }
+
+  @media (max-width: 700px) {
+    width: calc(50% - 10px);
   }
 }
 
@@ -142,4 +150,35 @@
   padding: 0;
   height: 40px;
   width: 40px;
+}
+
+.cover-img {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+.title-overlay {
+  background: rgba(255, 255, 255, 0.3);
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+
+  h2 {
+    color: $dark-grey;
+    font-family: "Futura Today Demibold", Arial,sans-serif;
+    font-weight: 500;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 250ms ease;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transition: all 250ms ease;
+  }
 }

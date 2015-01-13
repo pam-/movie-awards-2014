@@ -180,7 +180,6 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #FFFFFF;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
   margin: 0 auto 2em auto;
-  padding: 2em;
   transition: -webkit-transform 800ms ease;
   transition: transform 800ms ease;
 }
@@ -204,11 +203,6 @@ h1, h2, h3, h4, h5, h6 {
   transform: translate(0, -2000px);
   transition: -webkit-transform 800ms ease;
   transition: transform 800ms ease;
-}
-@media (max-width: 800px) {
-  .card {
-    padding: 4em 2em;
-  }
 }
 
 .chart-labels {
@@ -242,7 +236,7 @@ h1, h2, h3, h4, h5, h6 {
 .small-card {
   cursor: pointer;
   float: left;
-  height: 150px;
+  height: auto;
   margin-bottom: 10px;
   margin-right: 10px;
   max-width: 100%;
@@ -250,7 +244,7 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
   transition: -webkit-transform 200ms ease;
   transition: transform 200ms ease;
-  width: 350px;
+  width: calc(25% - 10px);
 }
 .small-card:hover {
   -webkit-transform: translate(0, 5px);
@@ -258,6 +252,16 @@ h1, h2, h3, h4, h5, h6 {
   transform: translate(0, 5px);
   transition: -webkit-transform 200ms ease;
   transition: transform 200ms ease;
+}
+@media (max-width: 900px) {
+  .small-card {
+    width: calc(33% - 10px);
+  }
+}
+@media (max-width: 700px) {
+  .small-card {
+    width: calc(50% - 10px);
+  }
 }
 
 .category-bar {
@@ -334,6 +338,37 @@ h1, h2, h3, h4, h5, h6 {
   width: 40px;
 }
 
+.cover-img {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+.title-overlay {
+  background: rgba(255, 255, 255, 0.3);
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.title-overlay h2 {
+  color: #231F20;
+  font-family: "Futura Today Demibold", Arial,sans-serif;
+  font-weight: 500;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  transition: all 250ms ease;
+}
+.title-overlay:hover {
+  background: rgba(255, 255, 255, 0.8);
+  transition: all 250ms ease;
+}
+
 /* Effect 8: 3D flip horizontal */
 .modal {
   position: fixed;
@@ -351,11 +386,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .card-detail {
+  padding: 2em;
   position: static;
   -webkit-transform: translate(0, -100%);
   -ms-transform: translate(0, -100%);
   transform: translate(0, -100%);
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
   width: 100%;
   opacity: 0;
 }
@@ -385,7 +421,7 @@ h1, h2, h3, h4, h5, h6 {
 .modal-overlay.show {
   opacity: 1;
   visibility: visible;
-  transition: all 0.3s;
+  transition: all 0.5s;
 }
 
 @media (max-width: 800px) {

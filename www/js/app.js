@@ -1,5 +1,7 @@
 define([
+  'require',
   'jquery',
+  'imagesloaded',
   'isotope',
   'analytics',
   'underscore',
@@ -7,7 +9,9 @@ define([
   'templates',
   'collections/movies'
   // 'jquery_ui_touch_punch'
-  ], function(jQuery, Isotope, Analytics, _, Backbone, templates, moviesCollection) {
+  ], function(require, jQuery, imagesLoaded, Isotope, Analytics, _, Backbone, templates, moviesCollection) {
+
+    
 
 
   var app = app || {};
@@ -20,7 +24,7 @@ define([
 
 
   
-
+  var MOBILE = true;
 
 
   
@@ -53,11 +57,22 @@ define([
 
       this.$cardWrap.empty();
       app.collections.questions.each(this.addOne, this);
-      this.iso = new Isotope("#card-wrap", {
-        itemSelector: '.card',
-        layoutMode: 'fitRows'
+      // app.iso = new Isotope("#card-wrap", {
+      //   itemSelector: '.card',
+      //   transitionDuration: (!MOBILE) ? '0.4s' : 0,
+      //   // layoutMode: 'fitRows'
+      // });
+      // imagesLoaded( "#card-wrap", function() {
+      //   app.iso.layout();
+      // });
+      var $cardWrap = this.$cardWrap;
+      $cardWrap.imagesLoaded( function() {
+        $cardWrap.isotope( {
+          itemSelector: '.card',
+          transitionDuration: (!MOBILE) ? '0.4s' : 0,
+          // layoutMode: 'fitRows'
+        });
       });
-      console.log(this.iso);
       // this.iso.arrange({filter: ".test"});
       // this.addTimeStamp();
     },
@@ -138,6 +153,9 @@ define([
     showDetail: function() {
 
       if(this.model.get("highlight")) {
+        if (app.views.detailView) {
+          app.views.detailView.remove();
+        }
         app.views.detailView = new app.views.DetailCard({model: this.model});
 
         $(".page-wrap").append(app.views.detailView.render().el);
@@ -255,10 +273,18 @@ define([
 
   app.init = function() {
 
-    app.collections.questions = new moviesCollection(); 
-    app.views.appView = new app.views.AppView();
-    app.router = new app.Router();
-    Backbone.history.start();
+    require( [ 'jquery-bridget/jquery.bridget' ],
+      function() {
+        // make Isotope a jQuery plugin
+        $.bridget( 'isotope', Isotope );
+        app.collections.questions = new moviesCollection(); 
+        app.views.appView = new app.views.AppView();
+        app.router = new app.Router();
+        Backbone.history.start();
+      }
+    );
+
+    
     
     
   };
