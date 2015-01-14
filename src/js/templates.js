@@ -61,6 +61,25 @@ __p += '" alt="' +
 return __p
 };
 
+this["JST"]["tags.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
+function print() { __p += __j.call(arguments, '') }
+with (obj) {
+
+ _.each(tags, function(tag) { ;
+__p += '\n\n<div class="iapp-filter-button" data-filter="' +
+((__t = ( tag )) == null ? '' : __t) +
+'">' +
+((__t = ( tag )) == null ? '' : __t) +
+'</div>\n\n\n';
+ }); ;
+
+
+}
+return __p
+};
+
   return this["JST"];
 
 });

@@ -8,9 +8,10 @@ define([
   'backbone',
   'lib/BackboneRouter',
   'templates',
-  'collections/movies'
+  'collections/movies',
+  'models/tags'
   // 'jquery_ui_touch_punch'
-  ], function(require, jQuery, imagesLoaded, Isotope, Analytics, _, Backbone, Backbone2, templates, moviesCollection) {
+  ], function(require, jQuery, imagesLoaded, Isotope, Analytics, _, Backbone, Backbone2, templates, moviesCollection, tags) {
 
     
 
@@ -61,14 +62,7 @@ define([
 
       this.$cardWrap.empty();
       app.collections.questions.each(this.addOne, this);
-      // app.iso = new Isotope("#card-wrap", {
-      //   itemSelector: '.card',
-      //   transitionDuration: (!MOBILE) ? '0.4s' : 0,
-      //   // layoutMode: 'fitRows'
-      // });
-      // imagesLoaded( "#card-wrap", function() {
-      //   app.iso.layout();
-      // });
+      this.renderFilters();
       var $cardWrap = this.$cardWrap;
       $cardWrap.imagesLoaded( function() {
         $cardWrap.isotope( {
@@ -107,6 +101,11 @@ define([
       _.each(filteredCollection, function(item) {
         this.addOne(item);
       }, this);
+    },
+
+    filtersTemplate: templates["tags.html"],
+    renderFilters: function() {
+      this.$el.find(".iapp-filters-wrap").html(this.filtersTemplate({tags: tags}));
     }
   });
 
@@ -243,7 +242,6 @@ define([
     },
     twitterShare: function(e) {
       Analytics.click('twitter share clicked');
-      console.log("twitter");
 
         if (!isMobile) {
             e.preventDefault();
@@ -284,16 +282,13 @@ define([
 
     highlight: function(id) {
 
-      console.log(app.collections.questions);
       
       if (app.collections.questions.toJSON().length == 0) {
-        console.log("zero models so far");
         app.collections.questions.once("reset", function() {
           var detailModel = _.find(app.collections.questions.models, function(model) {
         
             return model.get("rowNumber") == id;
           });
-          console.log(detailModel);
           detailModel.set({"highlight": true});
           app.views.detailView = new app.views.DetailCard({model: detailModel});
 
