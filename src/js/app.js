@@ -17,6 +17,9 @@ define([
 
   var app = app || {};
 
+  app.config = JSON.parse($('.staticinfo').html());
+  var isMobile = app.config.platform === 'mobile';
+
   _.extend(app, {
     models: {},
     collections: {},
@@ -25,7 +28,7 @@ define([
 
 
   
-  var MOBILE = true;
+  var MOBILE = isMobile;
 
 
   
@@ -176,6 +179,8 @@ define([
 
     events: {
       "click .close-card": "removeHighlight",
+      "click .facebook-share": "facebookShare",
+      "click .twitter-share": "twitterShare"
       // "touchstart .close-card": "removeHighlight",
      
     },
@@ -220,6 +225,31 @@ define([
 
     removeHighlight: function() {
       this.model.set({"highlight": false});
+    },
+
+    facebookShare: function(e) {
+        Analytics.click('facebook share clicked');
+
+        if (window.FB) {
+
+           e.preventDefault(); 
+
+           window.FB.ui({
+              method: 'share',
+              href: window.location.href,
+            }, function(response){});
+            
+        }
+    },
+    twitterShare: function(e) {
+      Analytics.click('twitter share clicked');
+      console.log("twitter");
+
+        if (!isMobile) {
+            e.preventDefault();
+
+            window.open(e.currentTarget.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,width=550,height=420');
+        }
     }
 
   });
@@ -255,19 +285,22 @@ define([
     highlight: function(id) {
 
       console.log(app.collections.questions);
-      _.defer(function() {
-        console.log(app.collections.questions);
-        var detailModel = _.find(app.collections.questions.models, function(model) {
+      
+      if (app.collections.questions.toJSON().length == 0) {
+        console.log("zero models so far");
+        app.collections.questions.once("reset", function() {
+          var detailModel = _.find(app.collections.questions.models, function(model) {
         
-        return model.get("rowNumber") == id;
-      });
-      detailModel.set({"highlight": true});
-      app.views.detailView = new app.views.DetailCard({model: detailModel});
+            return model.get("rowNumber") == id;
+          });
+          console.log(detailModel);
+          detailModel.set({"highlight": true});
+          app.views.detailView = new app.views.DetailCard({model: detailModel});
 
-        $(".page-wrap").append(app.views.detailView.render().el);
-        app.views.detailView.postRender(app.views.detailView.render().$el);
-
-      })
+          $(".page-wrap").append(app.views.detailView.render().el);
+          app.views.detailView.postRender(app.views.detailView.render().$el);
+        });
+      }
       
     }
 
