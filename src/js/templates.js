@@ -13,9 +13,13 @@ __p += '  <div class="card card-detail">\n\n    <div class="close-card"></div>\n
 ((__t = ( movietitle )) == null ? '' : __t) +
 ' </h2>\n    <p class="iapp-summary">' +
 ((__t = ( summary )) == null ? '' : __t) +
-'</p>\n    \n    <a href="' +
+'</p>\n\n    ';
+ if (usatodayreview.length > 0) { ;
+__p += '\n    \n    <a href="' +
 ((__t = ( usatodayreview )) == null ? '' : __t) +
-'" class="read-more-link" target="_blank">Read USA TODAY\'s review</a>\n    <div id="social">\n\n      ';
+'" class="read-more-link" target="_blank">Read USA TODAY\'s review</a>\n\n    ';
+ } ;
+__p += '\n    <div id="social">\n\n      ';
  
       var encodedURL = encodeURIComponent(window.location.href);
       var redirectUrl = "http://www.gannett-cdn.com/experiments/usatoday/_common/_dialogs/fb-share-done.html";
@@ -67,8 +71,10 @@ var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
 function print() { __p += __j.call(arguments, '') }
 with (obj) {
 
- _.each(tags, function(tag) { 
-    var tagClass = tag.toLowerCase().replace(/(^\s+|[^a-zA-Z0-9 ]+|\s+$)/g,"").replace(/\s+/g, "-");
+ _.each(tags, function(tag) {
+  var tagClass;
+    tag == ":(" ? tagClass="sad" : tagClass = tag.toLowerCase().replace(/(^\s+|[^a-zA-Z0-9 ]+|\s+$)/g,"").replace(/\s+/g, "-");
+    
   ;
 __p += '\n\n<div class="iapp-filter-button" data-filter="' +
 ((__t = ( tagClass )) == null ? '' : __t) +

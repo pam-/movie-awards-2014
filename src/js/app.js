@@ -115,7 +115,7 @@ define([
     setFilter: function(e) {
       var $target = $(e.target);
       var newFilter = "." + $target.attr("data-filter");
-      if ($target.hasClass("iapp-selected")) {
+      if (_.contains(this.currentFilter, newFilter)) {
         $target.removeClass("iapp-selected");
         this.currentFilter = _.without(this.currentFilter, newFilter);
       } else {
@@ -123,15 +123,13 @@ define([
         $target.addClass("iapp-selected");
 
         this.currentFilter.push(newFilter);
-        var filterStr = "";
+        
+      }
+      // window.alert(this.currentFilter);
+      var filterStr = "";
         _.each(this.currentFilter, function(filter) {
           filterStr += filter;
         });
-        
-
-        
-      }
-
       this.$cardWrap.isotope({ filter: filterStr });
 
 
@@ -161,7 +159,8 @@ define([
       var categories = this.model.get("categories");
       var classes = "card small-card";
       _.each(categories, function(category) {
-        var tagClass = category.toLowerCase().replace(/(^\s+|[^a-zA-Z0-9 ]+|\s+$)/g,"").replace(/\s+/g, "-");
+        var tagClass; 
+        category == ":(" ? tagClass="sad" : tagClass = category.toLowerCase().replace(/(^\s+|[^a-zA-Z0-9 ]+|\s+$)/g,"").replace(/\s+/g, "-");
         classes += (" " + tagClass);
       });
       return classes;
