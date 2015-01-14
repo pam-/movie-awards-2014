@@ -7,9 +7,9 @@ obj || (obj = {});
 var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
 function print() { __p += __j.call(arguments, '') }
 with (obj) {
-__p += '  <div class="card card-detail">\n\n    <div class="close-card"></div>\n\n  <iframe width="560" height="315" src="' +
+__p += '  <div class="card card-detail">\n\n    <div class="close-card"></div>\n\n  <div class="iapp-vid-wrap">\n    <iframe width="100%" height="100%" src="' +
 ((__t = ( trailerlink )) == null ? '' : __t) +
-'" frameborder="0" allowfullscreen></iframe>\n\n    <h2 class="card-back-header">' +
+'" frameborder="0" allowfullscreen></iframe>\n  </div>\n\n    <h2 class="card-back-header">' +
 ((__t = ( movietitle )) == null ? '' : __t) +
 ' </h2>\n    <p class="iapp-summary">' +
 ((__t = ( summary )) == null ? '' : __t) +
