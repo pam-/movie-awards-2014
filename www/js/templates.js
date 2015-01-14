@@ -15,7 +15,7 @@ __p += '  <div class="card card-detail">\n\n    <div class="close-card"></div>\n
 ((__t = ( summary )) == null ? '' : __t) +
 '</p>\n    \n    <a href="' +
 ((__t = ( usatodayreview )) == null ? '' : __t) +
-'" class="read-more-link" target="_blank">Learn more</a>\n    <div id="social">\n\n      ';
+'" class="read-more-link" target="_blank">Read USA TODAY\'s review</a>\n    <div id="social">\n\n      ';
  
       var encodedURL = encodeURIComponent(window.location.href);
       var redirectUrl = "http://www.gannett-cdn.com/experiments/usatoday/_common/_dialogs/fb-share-done.html";

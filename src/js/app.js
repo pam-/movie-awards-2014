@@ -6,10 +6,11 @@ define([
   'analytics',
   'underscore',
   'backbone',
+  'lib/BackboneRouter',
   'templates',
   'collections/movies'
   // 'jquery_ui_touch_punch'
-  ], function(require, jQuery, imagesLoaded, Isotope, Analytics, _, Backbone, templates, moviesCollection) {
+  ], function(require, jQuery, imagesLoaded, Isotope, Analytics, _, Backbone, Backbone2, templates, moviesCollection) {
 
     
 
@@ -28,12 +29,12 @@ define([
 
 
   
-  // app.collections.questions.bind("reset", _.once(Backbone.history.start));
+  // app.collections.questions.bind("reset", _.once(Backbone2.history.start));
 
   // App-wide View
   // ----
 
-  app.views.AppView = Backbone.View.extend({
+  app.views.AppView = Backbone2.View.extend({
     el: "body",
     events: {
       "click .modal-overlay": "removeHighlight",
@@ -109,7 +110,7 @@ define([
   // QuestionCard View
   // ----
 
-  app.views.QuestionCard = Backbone.View.extend({
+  app.views.QuestionCard = Backbone2.View.extend({
     tagName: "div",
 
     className: function() {
@@ -168,7 +169,7 @@ define([
   });
 
 
-  app.views.DetailCard = Backbone.View.extend({
+  app.views.DetailCard = Backbone2.View.extend({
     tagName: "div",
     className: "modal",
     template: templates["card-back.html"],
@@ -208,10 +209,14 @@ define([
         $(".modal-overlay").removeClass("show");
         this.$el.removeClass("modal-show");
         _.defer(function() { app.router.navigate("movie"); });
-        this.stopListening();
+        var _this = this;
+        _.delay(function() {
+          _this.remove();
+        }, 500);
       }
       
     },
+
 
     removeHighlight: function() {
       this.model.set({"highlight": false});
@@ -221,7 +226,7 @@ define([
 
   
     
-  app.Router = Backbone.Router.extend({
+  app.Router = Backbone2.Router.extend({
 
     routes: {
       "": "home",
@@ -280,7 +285,7 @@ define([
         app.collections.questions = new moviesCollection(); 
         app.views.appView = new app.views.AppView();
         app.router = new app.Router();
-        Backbone.history.start();
+        Backbone2.history.start();
       }
     );
 
