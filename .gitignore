@@ -50,6 +50,7 @@ python_result.xml
 coverage.xml
 .cache/
 www/
+secrets.json
 
 # Installer logs
 pip-log.txt
