@@ -9,8 +9,8 @@ define([
   'lib/BackboneRouter',
   'templates',
   'collections/movies',
-  'models/tags'
-  // 'jquery_ui_touch_punch'
+  'models/tags',
+  'jquery_ui_touch_punch'
   ], function(require, jQuery, imagesLoaded, Isotope, Analytics, _, Backbone, Backbone2, templates, moviesCollection, tags) {
 
     
