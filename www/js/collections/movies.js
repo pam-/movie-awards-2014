@@ -1,1 +1,0 @@
-define(["jquery","underscore","backbone","models/movie"],function(e,o,n,t){var s,a=window.location.hostname;return s="localhost"==a?"js/data.json":"http://"+a+"/services/webproxy/?url=http://www.gannett-cdn.com/experiments/usatoday/2015/01/movies-2014/js/data.json",n.Collection.extend({model:t,url:s})});
