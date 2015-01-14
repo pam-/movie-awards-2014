@@ -12,6 +12,7 @@ article .iapp-page-header {
   font-family: "Futura Today Bold", Arial,sans-serif;
   font-size: 2.8em;
   margin: 0.5em 0;
+  padding: 0;
   text-align: left;
   text-transform: uppercase;
 }
@@ -51,7 +52,7 @@ article .iapp-page-header {
 }
 
 @media (max-width: $breakPoint-medium) {
-  .page-header {
+  .iapp-page-header {
     font-size: 1.8em;
   }
 }
