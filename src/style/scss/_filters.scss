@@ -1,0 +1,30 @@
+.iapp-filter-button {
+  display: inline-block;
+  color: white;
+  cursor: pointer;
+  float: left;
+  background: $dark-blue;
+  padding: 0.5em;
+  margin-bottom: 1em;
+  margin-right: 0.5em;
+  text-transform: uppercase;
+
+  &.iapp-selected {
+    background: $light-blue;
+  }
+}
+
+.iapp-filters-wrap {
+  @extend .group;
+}
+
+.iapp-filter-button-clear {
+  @extend .iapp-filter-button;
+  background: none;
+  border: solid 1px $dark-blue;
+  color: $dark-blue;
+  display: none;
+  &.show {
+    display: inline-block;
+  }
+}

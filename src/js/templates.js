@@ -20,7 +20,7 @@ __p += '  <div class="card card-detail">\n\n    <div class="close-card"></div>\n
       var encodedURL = encodeURIComponent(window.location.href);
       var redirectUrl = "http://www.gannett-cdn.com/experiments/usatoday/_common/_dialogs/fb-share-done.html";
       var encodedURL2 = encodeURI(window.location.href + "/%23" + rowNumber);
-      var encodedStr = encodeURIComponent("Top Ebola virus questions answered: " + movietitle);
+      var encodedStr = encodeURIComponent("You should probably watch… " + movietitle + ", filtered just for you by @usatoday’s #2014movieguide");
       var encodedTitle = encodeURIComponent("Top Ebola virus questions answered");
       var encodedQuestion = encodeURIComponent(movietitle);
       var fbRedirectUrl = encodeURIComponent("http://www.gannett-cdn.com/usatoday/_common/_dialogs/fb-share-done.html");
@@ -67,14 +67,16 @@ var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
 function print() { __p += __j.call(arguments, '') }
 with (obj) {
 
- _.each(tags, function(tag) { ;
+ _.each(tags, function(tag) { 
+    var tagClass = tag.toLowerCase().replace(/(^\s+|[^a-zA-Z0-9 ]+|\s+$)/g,"").replace(/\s+/g, "-");
+  ;
 __p += '\n\n<div class="iapp-filter-button" data-filter="' +
-((__t = ( tag )) == null ? '' : __t) +
+((__t = ( tagClass )) == null ? '' : __t) +
 '">' +
 ((__t = ( tag )) == null ? '' : __t) +
 '</div>\n\n\n';
  }); ;
-
+__p += '\n\n<div class="iapp-filter-button-clear">Clear Filters</div>';
 
 }
 return __p

@@ -42,6 +42,8 @@ define([
     el: "body",
     events: {
       "click .modal-overlay": "removeHighlight",
+      "click .iapp-filter-button": "setFilter",
+      "click .iapp-filter-button-clear": "clearFilters"
       // "touchstart .modal-overlay": "removeHighlight" 
     },
 
@@ -106,6 +108,46 @@ define([
     filtersTemplate: templates["tags.html"],
     renderFilters: function() {
       this.$el.find(".iapp-filters-wrap").html(this.filtersTemplate({tags: tags}));
+    },
+
+    currentFilter: [],
+
+    setFilter: function(e) {
+      var $target = $(e.target);
+      var newFilter = "." + $target.attr("data-filter");
+      if ($target.hasClass("iapp-selected")) {
+        $target.removeClass("iapp-selected");
+        this.currentFilter = _.without(this.currentFilter, newFilter);
+      } else {
+        
+        $target.addClass("iapp-selected");
+
+        this.currentFilter.push(newFilter);
+        var filterStr = "";
+        _.each(this.currentFilter, function(filter) {
+          filterStr += filter;
+        });
+        
+
+        
+      }
+
+      this.$cardWrap.isotope({ filter: filterStr });
+
+
+      if (this.currentFilter.length > 0) {
+          this.$el.find(".iapp-filter-button-clear").addClass("show");
+        } else {
+          this.$el.find(".iapp-filter-button-clear").removeClass("show");
+        }
+      
+    },
+
+    clearFilters: function(e) {
+      this.currentFilter = [];
+      this.$el.find(".iapp-filter-button-clear").removeClass("show");
+      this.$el.find(".iapp-filters-wrap").find(".iapp-filter-button").removeClass("iapp-selected");
+      this.$cardWrap.isotope({ filter: "" });
     }
   });
 
@@ -119,13 +161,14 @@ define([
       var categories = this.model.get("categories");
       var classes = "card small-card";
       _.each(categories, function(category) {
-        classes += (" " + category);
+        var tagClass = category.toLowerCase().replace(/(^\s+|[^a-zA-Z0-9 ]+|\s+$)/g,"").replace(/\s+/g, "-");
+        classes += (" " + tagClass);
       });
       return classes;
     },
 
     events: {
-      "click": "setHighlight"
+      "click": "setHighlight",
     },
 
     template: templates["card-front.html"],

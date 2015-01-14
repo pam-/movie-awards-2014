@@ -4,9 +4,11 @@
   position: fixed;
   top: 50%;
   left: 50%;
+  max-width: 900px;
   transform: translate(-50%, -50%);
   z-index: 2000;
   visibility: hidden;
+  width: 60%;
   // perspective: 1300px;
 }
 
