@@ -336,20 +336,20 @@ module.exports = function(grunt) {
       },
       upload1: {
         files: {
-          '/17200/experiments/usatoday/2015/01/weekly-quiz/': 'js/main.js'
-          // '/17200/experiments/usatoday/2015/1/weekly-quiz/': 'data/*.json'
+          '/17200/experiments/usatoday/2015/01/movies-2014/': 'js/main.js'
+          // '/17200/experiments/usatoday/2015/1/movies-2014/': 'data/*.json'
         }
       },
       upload2: {
         files: {
-          '/17200/experiments/usatoday/2015/01/weekly-quiz/': 'style/project.css'
-          // '/17200/experiments/usatoday/2015/1/weekly-quiz/': 'data/*.json'
+          '/17200/experiments/usatoday/2015/01/movies-2014/': 'style/project.css'
+          // '/17200/experiments/usatoday/2015/1/movies-2014/': 'data/*.json'
         }
       },
       upload3: {
         files: {
 
-          '/17200/experiments/usatoday/2015/01/2014-movies/': 'data/*.json'
+          '/17200/experiments/usatoday/2015/01/movies-2014/': 'js/data.json'
         }
       }
     },
