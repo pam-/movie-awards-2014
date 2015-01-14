@@ -1,27 +1,24 @@
-* {
+article * {
    -moz-box-sizing:    border-box;   /* Firefox 1, probably can drop this */
    -webkit-box-sizing: border-box;   /* Safari 3-4, also probably droppable */
     box-sizing:        border-box;   /* Everything else */
 }
 
+div.non-article-content{
+  padding: 0 !important;
+}
 
-body, div, html, {
-  margin: 0;
+body, html, article {
   padding: 0;
+  margin: 0;
 }
 
-html {
-  height: 100%;
-}
 
-body {
-  bottom: 0;
-  font-family: "Futura Today Bold", Arial,sans-serif;
-  height: 100%;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
+
+
+article {
+  padding: 0;
+  width: 100% !important;
 }
 
 .group:after {

@@ -306,7 +306,7 @@ module.exports = function(grunt) {
           {
             expand: true,
             cwd: '<%=config.build%>',
-            src: ['data/*.json'],
+            src: ['js/*.json'],
             dest: '',
             filter: 'isFile'
           },

@@ -11,7 +11,7 @@ __p += '  <div class="card card-detail">\n\n    <div class="close-card"></div>\n
 ((__t = ( trailerlink )) == null ? '' : __t) +
 '" frameborder="0" allowfullscreen></iframe>\n\n    <h2 class="card-back-header">' +
 ((__t = ( movietitle )) == null ? '' : __t) +
-' </h2>\n    <p class="summary">' +
+' </h2>\n    <p class="iapp-summary">' +
 ((__t = ( summary )) == null ? '' : __t) +
 '</p>\n    \n    <a href="' +
 ((__t = ( usatodayreview )) == null ? '' : __t) +

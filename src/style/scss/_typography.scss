@@ -1,9 +1,13 @@
+article {
+  font-family: "Futura Today", Arial, sans-serif;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
   margin: 0;
 }
 
-.page-header {
+.iapp-page-header {
   color: $dark-blue;
   font-family: "Futura Today Bold", Arial,sans-serif;
   font-size: 2.8em;
@@ -12,13 +16,13 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
 }
 
-.page-chatter {
+.iapp-page-chatter {
   font: normal 1.2em/1.5 'arial','helvetica',sans-serif;
   color: #666;
   max-width: 30em;
 }
 
-.time-stamp {
+.iapp-time-stamp {
   color: #aaa;
   font: normal 0.7em/1.5 'arial','helvetica',sans-serif;
   font-style: italic;
@@ -70,14 +74,14 @@ h1, h2, h3, h4, h5, h6 {
   color: $blue;
 }
 
-.credits { 
+.iapp-credits { 
   color: $medium-grey;
   clear: both;
   font-family: Arial, sans-serif;
   font-size: 12px;  
 }
 
-.summary {
+.iapp-summary {
   font-family: "Futura Today", Arial, sans-serif;
   font-weight: 400;
 }

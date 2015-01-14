@@ -1,12 +1,9 @@
 
 main.js
 ----------------
-jquery.js
 imagesloaded.js
 isotope.js
 lib/analytics.js
-underscore.js
-backbone.js
 lib/BackboneRouter.js
 templates.js
 models/movie.js

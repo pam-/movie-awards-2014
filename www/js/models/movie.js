@@ -1,14 +1,1 @@
-define([
-  "jquery",
-  "underscore",
-  "backbone"
-], function($, _, Backbone) {
-  return Backbone.Model.extend({
-    defaults: {
-      highlight: false
-    }, 
-    initialize: function() {
-      // this.attributes.category = this.attributes.category.split(", ");
-    }
-  });
-})
+define(["jquery","underscore","backbone"],function(e,n,i){return i.Model.extend({defaults:{highlight:!1},initialize:function(){}})});
