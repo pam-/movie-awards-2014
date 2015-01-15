@@ -1,16 +1,18 @@
 .iapp-filter-button {
+  border: solid 1px $dark-blue;
   display: inline-block;
-  color: white;
+  color: $dark-blue;
   cursor: pointer;
   float: left;
-  background: $dark-blue;
+  background: none;
   padding: 0.5em;
   margin-bottom: 1em;
   margin-right: 0.5em;
   text-transform: uppercase;
 
   &.iapp-selected {
-    background: $light-blue;
+    background: $dark-blue;
+    color: white;
   }
 }
 
@@ -21,8 +23,8 @@
 .iapp-filter-button-clear {
   @extend .iapp-filter-button;
   background: none;
-  border: solid 1px $dark-blue;
-  color: $dark-blue;
+  border: solid 1px $dark-red;
+  color: $dark-red;
   display: none;
   &.show {
     display: inline-block;
