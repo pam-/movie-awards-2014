@@ -35,7 +35,10 @@
       %>
     
       <a class="twitter-share" href="<%= tweetUrl %>" class='social-link' id='twitter-share'> <img src='http://www.gannett-cdn.com/experiments/usatoday/2014/10/ebola-questions/img/twitter.svg' alt="twitter" class="social-icon"></a>
+      <% if (false) { %>
       <a class="facebook-share" href="<% print("https://www.facebook.com/dialog/feed?display=popup&app_id=215046668549694&link=" + encodedURL2 + "&picture=" + basepath + "fb-post.jpg&name=" + encodedTitle +"&description=" + encodedQuestion + "&redirect_uri=" + fbRedirectUrl)%>"><img src='http://www.gannett-cdn.com/experiments/usatoday/2014/10/ebola-questions/img/fb.svg' alt="facebook" class="social-icon"></a>
+
+      <% }%>
       <a href="<%= emailURL %>" target="sharer" class="social-link" id="email-share"><img src="http://www.gannett-cdn.com/experiments/usatoday/2014/10/ebola-questions/img/email.svg" alt="email" class="social-icon">
         </a>
     </div>

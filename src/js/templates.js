@@ -6,7 +6,7 @@ this["JST"]["app-view.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<h1 class="iapp-page-header">2014 Awards Season Movie Guide</h1>\n<p class="iapp-page-chatter">Oscar season is officially here, and if you’re like some of us wannabe movie buffs, you may have let a few of 2014’s best movies slip through the cracks. Need a refresher? Check out our 2014 Awards Season Movie Guide. Just click the filters and get as specific as you want. Who knows? Your new favorite flick may be out there and you didn’t even know it.</p>\n<p class="time-stamp"></p>\n<div class="iapp-filters-wrap"></div> \n<div id="card-wrap"></div>\n<p class="iapp-credits"><strong>Credits:</strong> Ryan Carey-Mahoney, Mitchell Thorson, Lori Grisham, USA TODAY</p>\n\n<div class="modal-overlay"></div>';
+__p += '<h1 class="iapp-page-header">2014 Oscar-nominated (and not-so-nominated) Movie Guide </h1>\n<p class="iapp-page-chatter">Oscar season is officially here, and if you’re like some of us wannabe movie buffs, you may have let a few of 2014’s most notable movies slip through the cracks. USA TODAY\'s 2014 Movie Guide to the rescue. Just click the filters and get as specific as you want. Who knows? Your new favorite flick may be out there and you didn’t even know it. If you want to stick to award-worthy films, click “Oscar nominated.”</p>\n<p class="time-stamp"></p>\n<div class="iapp-filters-wrap"></div> \n<div id="card-wrap"></div>\n<p class="iapp-credits"><strong>Credits:</strong> Ryan Carey-Mahoney, Mitchell Thorson, Lori Grisham, USA TODAY</p>\n\n<div class="modal-overlay"></div>';
 
 }
 return __p
@@ -49,9 +49,13 @@ __p += '\n    <div id="social">\n\n      ';
       ;
 __p += '\n    \n      <a class="twitter-share" href="' +
 ((__t = ( tweetUrl )) == null ? '' : __t) +
-'" class=\'social-link\' id=\'twitter-share\'> <img src=\'http://www.gannett-cdn.com/experiments/usatoday/2014/10/ebola-questions/img/twitter.svg\' alt="twitter" class="social-icon"></a>\n      <a class="facebook-share" href="';
+'" class=\'social-link\' id=\'twitter-share\'> <img src=\'http://www.gannett-cdn.com/experiments/usatoday/2014/10/ebola-questions/img/twitter.svg\' alt="twitter" class="social-icon"></a>\n      ';
+ if (false) { ;
+__p += '\n      <a class="facebook-share" href="';
  print("https://www.facebook.com/dialog/feed?display=popup&app_id=215046668549694&link=" + encodedURL2 + "&picture=" + basepath + "fb-post.jpg&name=" + encodedTitle +"&description=" + encodedQuestion + "&redirect_uri=" + fbRedirectUrl);
-__p += '"><img src=\'http://www.gannett-cdn.com/experiments/usatoday/2014/10/ebola-questions/img/fb.svg\' alt="facebook" class="social-icon"></a>\n      <a href="' +
+__p += '"><img src=\'http://www.gannett-cdn.com/experiments/usatoday/2014/10/ebola-questions/img/fb.svg\' alt="facebook" class="social-icon"></a>\n\n      ';
+ };
+__p += '\n      <a href="' +
 ((__t = ( emailURL )) == null ? '' : __t) +
 '" target="sharer" class="social-link" id="email-share"><img src="http://www.gannett-cdn.com/experiments/usatoday/2014/10/ebola-questions/img/email.svg" alt="email" class="social-icon">\n        </a>\n    </div>\n  </div>';
 
