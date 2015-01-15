@@ -13,7 +13,7 @@ define([], function() {
     "Weepy teen tragedies",
     ":(",
     "Bro pics",
-    "Chic flicks",
+    "Chick flicks",
     "Creepy",
     "Adrenaline rush",
 

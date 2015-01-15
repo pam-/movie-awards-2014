@@ -66,15 +66,28 @@ define([
       app.collections.questions.each(this.addOne, this);
       this.renderFilters();
       var $cardWrap = this.$cardWrap;
+
       $cardWrap.imagesLoaded( function() {
         $cardWrap.isotope( {
           itemSelector: '.card',
           transitionDuration: (!MOBILE) ? '0.4s' : 0,
           // layoutMode: 'fitRows'
         });
+        $cardWrap.isotope("on", "layoutComplete", function(iso) {
+          if (iso.filteredItems.length === 0) {
+            if ($(".iapp-no-results-wrap").length === 0) {
+              $cardWrap.after("<div class='iapp-no-results-wrap'><h3>You think a movie like that exists? Try again.</h3></div>");
+            }
+          } else {
+            $(".iapp-no-results-wrap").remove();
+          }
+
+          
+        });
       });
-      // this.iso.arrange({filter: ".test"});
-      // this.addTimeStamp();
+
+   
+
     },
 
     removeHighlight: function() {
@@ -138,7 +151,7 @@ define([
         } else {
           this.$el.find(".iapp-filter-button-clear").removeClass("show");
         }
-      
+        
     },
 
     clearFilters: function(e) {
