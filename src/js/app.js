@@ -296,13 +296,22 @@ define([
     facebookShare: function(e) {
         Analytics.click('facebook share clicked');
 
+        var shareURL = app.config.share_url;
+        var picture = this.model.get("basepath") + "fb-post.jpg";
+        var description = "You should probably watch… " + this.model.get("movietitle") + ", filtered just for you by @usatoday’s #2014movieguide";
+
+        
         if (window.FB) {
 
            e.preventDefault(); 
 
            window.FB.ui({
-              method: 'share',
+              method: 'feed',
               href: window.location.href,
+              picture: picture,
+              name: "2014 Oscar-nominated (and not-so-nominated) Movie Guide",
+              caption: "2014 Oscar-nominated (and not-so-nominated) Movie Guide",
+              description: description
             }, function(response){});
             
         }

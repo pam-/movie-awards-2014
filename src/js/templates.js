@@ -35,14 +35,15 @@ __p += '\n    <div id="social">\n\n      ';
       var redirectUrl = "http://www.gannett-cdn.com/experiments/usatoday/_common/_dialogs/fb-share-done.html";
       var encodedURL2 = encodeURI(window.location.href + "/%23" + rowNumber);
       var encodedStr = encodeURIComponent("You should probably watch… " + movietitle + ", filtered just for you by @usatoday’s #2014movieguide");
-      var encodedTitle = encodeURIComponent("Top Ebola virus questions answered");
+      var encodedTitle = encodeURIComponent("2014 Oscar-nominated (and not-so-nominated) Movie Guide");
       var encodedQuestion = encodeURIComponent(movietitle);
       var fbRedirectUrl = encodeURIComponent("http://www.gannett-cdn.com/usatoday/_common/_dialogs/fb-share-done.html");
 
       var tweetUrl = "https://twitter.com/intent/tweet?url=" + encodedURL + "&text=" + encodedStr + "&via=USATODAY"; 
       var fbUrl = "javascript: var sTop=window.screen.height/2-(218);var sLeft=window.screen.width/2-(313);window.open('https://www.facebook.com/dialog/feed?display=popup&app_id=215046668549694&link=" + encodedURL2 + "&picture=" + basepath + "fb-post.jpg&name=" + encodedTitle + "&description=" + encodedQuestion + "&redirect_uri=http://www.gannett-cdn.com/usatoday/_common/_dialogs/fb-share-done.html','sharer','toolbar=0,status=0,width=580,height=400,top='+sTop+',left='+sLeft);Analytics.click('Facebook share');void(0);";
 
-      var fb2 = "javascript: var sTop=window.screen.height/2-(218);var sLeft=window.screen.width/2-(313);window.open('https://www.facebook.com/dialog/feed?display=popup&app_id=215046668549694&link=" + encodedURL2 + "&picture=" + basepath + "fb-post.jpg&name=" + encodedTitle +"&description=" + "Movie guide" + "&redirect_uri="+ redirectUrl + "','sharer','toolbar=0,status=0,width=580,height=400,top='+sTop+',left='+sLeft);Analytics.click('Facebook share');void(0);";
+      var fb2 = "javascript: var sTop=window.screen.height/2-(218);var sLeft=window.screen.width/2-(313);window.open('https://www.facebook.com/dialog/feed?display=popup&app_id=215046668549694&link=" + encodedURL2 + "&picture=" + basepath + "fb-post.jpg&name=" + encodedTitle +"&description=" + "Movie guide" + "&redirect_uri="+ window.location.href + "','sharer','toolbar=0,status=0,width=580,height=400,top='+sTop+',left='+sLeft);Analytics.click('Facebook share');void(0);";
+
 
       var emailURL = "mailto:?body=" + encodedQuestion +  "%0d%0d" + encodedURL +"&subject=" + encodedTitle;
       ;
@@ -50,7 +51,7 @@ __p += '\n    \n      <a class="twitter-share" href="' +
 ((__t = ( tweetUrl )) == null ? '' : __t) +
 '" class=\'social-link\' id=\'twitter-share\'> <img src=\'http://www.gannett-cdn.com/experiments/usatoday/2014/10/ebola-questions/img/twitter.svg\' alt="twitter" class="social-icon"></a>\n      <a class="facebook-share" href="';
  print("https://www.facebook.com/dialog/feed?display=popup&app_id=215046668549694&link=" + encodedURL2 + "&picture=" + basepath + "fb-post.jpg&name=" + encodedTitle +"&description=" + encodedQuestion + "&redirect_uri=" + fbRedirectUrl);
-__p += '"><img src=\'http://www.gannett-cdn.com/experiments/usatoday/2014/10/ebola-questions/img/fb.svg\' alt="twitter" class="social-icon"></a>\n      <a href="' +
+__p += '"><img src=\'http://www.gannett-cdn.com/experiments/usatoday/2014/10/ebola-questions/img/fb.svg\' alt="facebook" class="social-icon"></a>\n      <a href="' +
 ((__t = ( emailURL )) == null ? '' : __t) +
 '" target="sharer" class="social-link" id="email-share"><img src="http://www.gannett-cdn.com/experiments/usatoday/2014/10/ebola-questions/img/email.svg" alt="email" class="social-icon">\n        </a>\n    </div>\n  </div>';
 
