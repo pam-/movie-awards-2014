@@ -48,15 +48,17 @@
 }
 
 .iapp-no-results-wrap {
-  border-radius: 8px;
-  box-shadow: $shadow-standard;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
+  // border-radius: 8px;
+  // box-shadow: $shadow-standard;
+  // background-color: rgba(0, 0, 0, 0.5);
+  // color: white;
   height: 200px;
-  max-width: 100%;
-  width: 300px;
+  // max-width: 100%;
+  // width: 300px;
   padding: 2em;
   h3 {
-
+    color: $medium-grey;
+    font-family: "Futura Today Bold", Arial,sans-serif;
+    text-align: center;
   }
 }
