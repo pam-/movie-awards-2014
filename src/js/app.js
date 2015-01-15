@@ -308,9 +308,9 @@ define([
            window.FB.ui({
               method: 'feed',
               href: window.location.href,
-              picture: picture,
+              picture: "",
               name: "2014 Oscar-nominated (and not-so-nominated) Movie Guide",
-              caption: "2014 Oscar-nominated (and not-so-nominated) Movie Guide",
+              caption: shareURL,
               description: description
             }, function(response){});
             
