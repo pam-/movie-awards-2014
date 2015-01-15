@@ -39,7 +39,7 @@ define([
   // ----
 
   app.views.AppView = Backbone2.View.extend({
-    el: "body",
+    el: ".iapp-page-wrap",
     events: {
       "click .modal-overlay": "removeHighlight",
       "click .iapp-filter-button": "setFilter",
@@ -49,23 +49,34 @@ define([
 
     initialize: function() {
       this.listenTo(app.collections.questions, 'reset', this.addAll);
-      app.collections.questions.fetch({reset: true});
+      this.render();
+      
     },
 
     addOne: function(question) {
-
       var view = new app.views.QuestionCard({model: question});
       this.$cardWrap.append(view.render().el);
     },
 
-    $cardWrap: $("#card-wrap"),
+    template: templates["app-view.html"], 
+
+    render: function() {
+      this.$el.html(this.template({}));
+      this.$cardWrap = this.$el.find("#card-wrap");
+      app.collections.questions.fetch({reset: true});
+    },
+
+    $cardWrap: {},
 
     addAll: function() {
-
       this.$cardWrap.empty();
       app.collections.questions.each(this.addOne, this);
       this.renderFilters();
       var $cardWrap = this.$cardWrap;
+      var credits = _.map(app.collections.questions.toJSON(), function(item) {
+        return item.photocredit;
+      }).join(", ");
+      this.$el.append('<p class="iapp-credits"><strong>Photos: </strong>' + credits);
 
       $cardWrap.imagesLoaded( function() {
         $cardWrap.isotope( {
@@ -216,7 +227,7 @@ define([
         }
         app.views.detailView = new app.views.DetailCard({model: this.model});
 
-        $(".page-wrap").append(app.views.detailView.render().el);
+        $(".iapp-page-wrap").append(app.views.detailView.render().el);
         app.views.detailView.postRender(app.views.detailView.render().$el);
       }
 
@@ -270,6 +281,7 @@ define([
         _.defer(function() { app.router.navigate("movie"); });
         var _this = this;
         _.delay(function() {
+          console.log("remove");
           _this.remove();
         }, 500);
       }
@@ -347,7 +359,7 @@ define([
           detailModel.set({"highlight": true});
           app.views.detailView = new app.views.DetailCard({model: detailModel});
 
-          $(".page-wrap").append(app.views.detailView.render().el);
+          $(".iapp-page-wrap").append(app.views.detailView.render().el);
           app.views.detailView.postRender(app.views.detailView.render().$el);
         });
       }

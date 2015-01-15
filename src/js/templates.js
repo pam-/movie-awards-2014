@@ -2,6 +2,16 @@ define(function(){
 
 this["JST"] = this["JST"] || {};
 
+this["JST"]["app-view.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '<h1 class="iapp-page-header">2014 Awards Season Movie Guide</h1>\n<p class="iapp-page-chatter">Oscar season is officially here, and if you’re like some of us wannabe movie buffs, you may have let a few of 2014’s best movies slip through the cracks. Need a refresher? Check out our 2014 Awards Season Movie Guide. Just click the filters and get as specific as you want. Who knows? Your new favorite flick may be out there and you didn’t even know it.</p>\n<p class="time-stamp"></p>\n<div class="iapp-filters-wrap"></div> \n<div id="card-wrap"></div>\n<p class="iapp-credits"><strong>Credits:</strong> Ryan Carey-Mahoney, Mitchell Thorson, Lori Grisham, USA TODAY</p>\n\n<div class="modal-overlay"></div>';
+
+}
+return __p
+};
+
 this["JST"]["card-back.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
