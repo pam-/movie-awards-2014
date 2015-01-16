@@ -4,7 +4,7 @@ Copyright 2015 USA TODAY. All rights reserved. No part of these materials may be
 
 ##Development
 
-The requirements for this project are node.js and grunt. 
+The requirements for this project are Node.js, Bower and Grunt. 
 
 To install node with Hombrew:
 `brew install node`
@@ -13,6 +13,12 @@ Otherwise head over to the [Node website](http://nodejs.org/) and install from t
 Once Node is installed, install Grunt with
 `npm install -g grunt-cli`
 
-Once those dependencies are set up, from this repository run `npm install`, then run `grunt`
+and install Bower with 
+`npm install -g bower`
+
+Once those tools are installed (or if you already have them), from this repository run `npm install`, then run `bower install`, to install this project's dependencies.
+
+ then run `grunt` to start developing.
 
 ###Live version:
+http://www.usatoday.com/pages/interactives/movie-roundup/
