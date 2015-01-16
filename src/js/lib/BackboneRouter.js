@@ -346,7 +346,7 @@
 
         Backbone.Router.extend = Backbone.History.extend = Backbone.Model.extend;
 
-        return Backbone.noConflict();
+        return Backbone
 
     })
 
