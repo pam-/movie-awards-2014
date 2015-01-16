@@ -5,13 +5,12 @@ define([
   'isotope',
   'analytics',
   'underscore',
-  'backbone',
   'lib/BackboneRouter',
   'templates',
   'collections/movies',
   'models/tags',
   'jquery_ui_touch_punch'
-  ], function(require, jQuery, imagesLoaded, Isotope, Analytics, _, Backbone, Backbone2, templates, moviesCollection, tags) {
+  ], function(require, jQuery, imagesLoaded, Isotope, Analytics, _, Backbone, templates, moviesCollection, tags) {
 
     
 
@@ -33,12 +32,12 @@ define([
 
 
   
-  // app.collections.questions.bind("reset", _.once(Backbone2.history.start));
+  // app.collections.questions.bind("reset", _.once(Backbone.history.start));
 
   // App-wide View
   // ----
 
-  app.views.AppView = Backbone2.View.extend({
+  app.views.AppView = Backbone.View.extend({
     el: ".iapp-page-wrap",
     events: {
       "click .modal-overlay": "removeHighlight",
@@ -176,7 +175,7 @@ define([
   // QuestionCard View
   // ----
 
-  app.views.QuestionCard = Backbone2.View.extend({
+  app.views.QuestionCard = Backbone.View.extend({
     tagName: "div",
 
     className: function() {
@@ -237,7 +236,7 @@ define([
   });
 
 
-  app.views.DetailCard = Backbone2.View.extend({
+  app.views.DetailCard = Backbone.View.extend({
     tagName: "div",
     className: "modal",
     template: templates["card-back.html"],
@@ -330,7 +329,7 @@ define([
 
   
     
-  app.Router = Backbone2.Router.extend({
+  app.Router = Backbone.Router.extend({
 
     routes: {
       "": "home",
@@ -389,7 +388,7 @@ define([
         app.collections.questions = new moviesCollection(); 
         app.views.appView = new app.views.AppView();
         app.router = new app.Router();
-        Backbone2.history.start();
+        Backbone.history.start();
       }
     );
 
