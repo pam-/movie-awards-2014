@@ -2,7 +2,7 @@ var fs = require('fs');
 var osenv = require('osenv');
 var home = osenv.home();
 
-var secrets = JSON.parse(fs.readFileSync(home + '/.secrets/secrets.json', 'utf8'));
+// var secrets = JSON.parse(fs.readFileSync(home + '/.secrets/secrets.json', 'utf8'));
 
 module.exports = function(grunt) {
 
@@ -329,11 +329,11 @@ module.exports = function(grunt) {
     },
 
     ftp: {
-      options: {
-        host: secrets.akamai_1.host,
-        user: secrets.akamai_1.user,
-        pass: secrets.akamai_1.pass
-      },
+      // options: {
+      //   host: secrets.akamai_1.host,
+      //   user: secrets.akamai_1.user,
+      //   pass: secrets.akamai_1.pass
+      // },
       upload1: {
         files: {
           '/17200/experiments/usatoday/2015/01/movies-2014/': 'js/main.js'
