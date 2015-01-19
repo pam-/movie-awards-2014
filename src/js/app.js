@@ -86,7 +86,7 @@ define([
         $cardWrap.isotope("on", "layoutComplete", function(iso) {
           if (iso.filteredItems.length === 0) {
             if ($(".iapp-no-results-wrap").length === 0) {
-              $cardWrap.after("<div class='iapp-no-results-wrap'><h3>You think a movie like that exists? Try again.</h3></div>");
+              $cardWrap.after("<div class='iapp-no-results-wrap'><h3>Until you actually make that movie, try another filter.</h3></div>");
             }
           } else {
             $(".iapp-no-results-wrap").remove();
@@ -137,6 +137,7 @@ define([
 
     setFilter: function(e) {
       var $target = $(e.target);
+      console.log($target, this.$cardWrap)
       var newFilter = "." + $target.attr("data-filter");
       if (_.contains(this.currentFilter, newFilter)) {
         $target.removeClass("iapp-selected");
@@ -153,6 +154,7 @@ define([
         _.each(this.currentFilter, function(filter) {
           filterStr += filter;
         });
+        console.log(filterStr)
       this.$cardWrap.isotope({ filter: filterStr });
 
 
