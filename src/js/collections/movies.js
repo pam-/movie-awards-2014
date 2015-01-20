@@ -1,4 +1,4 @@
-  // Questions Collection
+  // Movies Collection
   // ---------------
 
   define([
@@ -19,8 +19,5 @@
     // Reference to this collection's model.
     model: movieModel,
     url: dataURL
-
-
   });
-
 });

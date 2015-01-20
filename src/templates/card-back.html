@@ -8,7 +8,9 @@
 
     <h2 class="card-back-header"><%= movietitle %> </h2>
     <p class="iapp-summary"><%= summary %></p>
-
+    <% if (intheaters) { %> 
+    <p> Currently in theaters </p>
+    <% }; %> 
     <% if (usatodayreview.length > 0) { %>
     
     <a href="<%= usatodayreview %>" class="read-more-link" target="_blank">Read USA TODAY's review</a>

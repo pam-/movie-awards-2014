@@ -23,7 +23,11 @@ __p += '  <div class="card card-detail">\n\n    <div class="close-card"></div>\n
 ((__t = ( movietitle )) == null ? '' : __t) +
 ' </h2>\n    <p class="iapp-summary">' +
 ((__t = ( summary )) == null ? '' : __t) +
-'</p>\n\n    ';
+'</p>\n    ';
+ if (intheaters) { ;
+__p += ' \n    <p> Currently in theaters </p>\n    ';
+ }; ;
+__p += ' \n    ';
  if (usatodayreview.length > 0) { ;
 __p += '\n    \n    <a href="' +
 ((__t = ( usatodayreview )) == null ? '' : __t) +
@@ -68,9 +72,13 @@ obj || (obj = {});
 var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
 function print() { __p += __j.call(arguments, '') }
 with (obj) {
-__p += '   <div class="category-bar">\n  \n   </div>\n   <div class="title-overlay"><h2>' +
+__p += '   <div class="category-bar">\n  \n   </div>\n   <div class="title-overlay">\n   \t<h2>' +
 ((__t = ( movietitle )) == null ? '' : __t) +
-'</h2></div>\n  <img class="cover-img" src="';
+' \n<!-- \t   \t';
+// if (intheaters){ ;
+__p += '\n   \t\t<small> Now Playing </small>\n   \t';
+// }; ;
+__p += ' --> \n   \t</h2> \n   </div>\n  <img class="cover-img" src="';
  print(basepath + photoname) ;
 __p += '" alt="' +
 ((__t = ( movietitle)) == null ? '' : __t) +
