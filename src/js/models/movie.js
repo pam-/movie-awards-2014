@@ -6,7 +6,7 @@ define([
   return Backbone.Model.extend({
     defaults: {
       highlight: false,
-      intheaters: true
+      intheaters: false
     }, 
     initialize: function() {
       // this.attributes.category = this.attributes.category.split(", ");

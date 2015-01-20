@@ -74,11 +74,9 @@ function print() { __p += __j.call(arguments, '') }
 with (obj) {
 __p += '   <div class="category-bar">\n  \n   </div>\n   <div class="title-overlay">\n   \t<h2>' +
 ((__t = ( movietitle )) == null ? '' : __t) +
-' \n<!-- \t   \t';
-// if (intheaters){ ;
-__p += '\n   \t\t<small> Now Playing </small>\n   \t';
-// }; ;
-__p += ' --> \n   \t</h2> \n   </div>\n  <img class="cover-img" src="';
+'\n   \t' +
+((__t = ( intheaters )) == null ? '' : __t) +
+' \n   \t</h2> \n   </div>\n  <img class="cover-img" src="';
  print(basepath + photoname) ;
 __p += '" alt="' +
 ((__t = ( movietitle)) == null ? '' : __t) +

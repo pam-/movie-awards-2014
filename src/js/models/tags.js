@@ -16,6 +16,7 @@ define([], function() {
     "Chick flicks",
     "Creepy",
     "Adrenaline rush",
-    "Oscar nominated"
+    "Oscar nominated",
+    "In theaters"
   ]
 });

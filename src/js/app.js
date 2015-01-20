@@ -56,6 +56,7 @@ define([
     addOne: function(movie) {
       var view = new app.views.MovieCard({model: movie});
       this.$cardWrap.append(view.render().el);
+      console.log(movie.get('intheaters'));
     },
 
     template: templates["app-view.html"], 
@@ -95,8 +96,6 @@ define([
           } else {
             $(".iapp-no-results-wrap").remove();
           }
-
-          
         });
       });
     },
@@ -120,13 +119,18 @@ define([
     },
 
     sanitizeTitle: function(title){
-      return title.toLowerCase().replace(/[^a-zA-Z0-9\s]/g, "").replace(/\s+/g, "-")
+      return title.toLowerCase().replace(/[^a-zA-Z0-9\s]/g, "").replace(/\s+/g, "-");
     },
 
     compareTitles: function(obj){
-      // console.log('hey')
       // console.log(obj.get('movietitle'))
-      console.log(this.$cardWrap)
+      // console.log(this.$cardWrap);
+      for (var i = 0; i < this.nowPlaying.length; i++) {
+        if(this.nowPlaying[i] == this.sanitizeTitle(obj.get('movietitle'))){
+          obj.set('intheaters', true)
+          // console.log(obj.get('intheaters'));
+        }
+      };
     },
 
     removeHighlight: function() {
@@ -166,7 +170,6 @@ define([
 
     setFilter: function(e) {
       var $target = $(e.target);
-      console.log($target, this.$cardWrap)
       var newFilter = "." + $target.attr("data-filter");
       if (_.contains(this.currentFilter, newFilter)) {
         $target.removeClass("iapp-selected");
@@ -233,22 +236,32 @@ define([
 
     initialize: function() {
       this.listenTo(this.model, 'change', this.showDetail);
+      this.model.on('change', this.render, this);
+    },
+
+    addTheaterClass: function(){
+      if(this.model.get('intheaters') == true){
+        this.$el.addClass('intheaters');
+      }
     },
 
     render: function() {
       this.$el.html(this.template(this.model.attributes));
+      if (this.model.get('intheaters')) {
+        this.$el.addClass('in-theaters')
+      };
       _.each(this.model.attributes.category, function(v, i) {
         this.$el.addClass(v);
         this.$el.attr( 'data-category', v);
       }, this);
-
+      console.log('HERE',this)
       return this;
     },
 
     setHighlight: function() {
       Analytics.click("opened card");
       this.model.set({"highlight": true});
-      // console.log(this.model.get('highlight'))
+      console.log(this.model.get('intheaters'))
     },
 
     showDetail: function() {
@@ -280,13 +293,12 @@ app.views.DetailCard = Backbone.View.extend({
     },
 
     initialize: function() {
-
       app.router.navigate("movie/" + this.model.get("rowNumber"));
       this.listenTo(this.model, 'change', this.removeCard);
     },
+
     render: function() {
       this.$el.empty();
-      
       this.$el.html(this.template(this.model.attributes));   
       return this;
     },
