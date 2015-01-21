@@ -49,8 +49,6 @@ define([
     },
 
     initialize: function() {
-      app.router = new app.Router();
-      app.router.navigate('movies');
       this.listenTo(app.collections.movies, 'reset', this.addAll);
       this.listenTo(app.collections.playing, 'reset', this.inTheaters)
       this.render();
@@ -294,11 +292,12 @@ define([
 app.views.HomeView = Backbone.View.extend({
   el: ".iapp-info",
  
-  template: templates["info-credits.html"],
+  template: templates["demo-credits.html"],
 
   events: {
     "click .close-card": "removeInfo",
-    "click .overlay": "removeInfo"
+    "click .overlay": "removeInfo",
+    "click .get-started": "removeInfo"
   },
 
   initialize: function() {
@@ -308,12 +307,40 @@ app.views.HomeView = Backbone.View.extend({
   render: function(){
     this.$el.empty();
     this.$el.html(this.template());
+    this.renderFilters();
+    this.animateFilters();
   },
 
   removeInfo: function(){
     console.log('this will close')
     this.remove();
-      _.defer(function() { app.router.navigate("movies"); });
+    _.defer(function() { app.router.navigate("movies"); });
+  },
+
+  filtersTemplate: templates["tags.html"],
+
+  renderFilters: function() {
+    this.$el.find(".iapp-filters-wrap").html(this.filtersTemplate({tags: tags}));
+  },
+
+  animateFilters: function(){
+    var firstButton = this.$el.find(".iapp-filter-button").eq(0);
+    var secButton = this.$el.find(".iapp-filter-button").eq(5);
+    var thirdButton = this.$el.find(".iapp-filter-button").eq(2);
+    var clearButton = this.$el.find(".iapp-filter-button-clear");
+    var guidelinesBegin = this.$el.find("p");
+    var guidelinesEnd = this.$el.find(".js-span");
+    setTimeout( function(){
+      guidelinesBegin.addClass('show')
+      firstButton.addClass('iapp-selected');
+      (clearButton).addClass('show')
+    }, 2000);
+    setTimeout(function(){
+      guidelinesEnd.addClass('show')
+      secButton.addClass('iapp-selected');
+      thirdButton.addClass('iapp-selected');
+    }, 3000);
+  
   }
 });
 
@@ -409,12 +436,16 @@ app.Router = Backbone.Router.extend({
 
   routes: {
     "":"home",
-    // "movies": "index",
+    "movies": "index",
     "movies/:id": "highlight",   // #/1
-    "*default": "home"
+    "*default": "index"
   },
 
-  home: function() {
+  home: function(){
+  },
+
+  index: function() {
+    app.views.homeView.remove();
      var highlightModel = _.find(app.collections.movies.models, function(model) {
       return model.get("highlight") === true;
     });
@@ -424,6 +455,7 @@ app.Router = Backbone.Router.extend({
   },
 
   highlight: function(id) {
+    app.views.homeView.remove();
     if (app.collections.movies.toJSON().length == 0) {
       app.collections.movies.once("reset", function() {
         var detailModel = _.find(app.collections.movies.models, function(model) {

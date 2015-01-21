@@ -7,12 +7,14 @@
   </div>
 
     <h2 class="card-back-header"><%= movietitle %> </h2>
-    <p class="iapp-summary"><%= summary %></p>
-    <% if (intheaters) { %> 
-    <p class="iapp-intheaters"> Currently in theaters </p>
+    <p class="iapp-summary"><%= summary %> 
+    <% if (release) { %> 
+      <span> Release date : <%= release %> </span>
     <% }; %> 
-    <% if (release) { %>
-    <p class="iapp-release"> Release Date: <smalll> <%= release %> </smalll>  </p>
+    </p>
+
+    <% if (intheaters) { %>
+    <p class="iapp-get-ticket"> <a href="http://www.fandango.com/search/?q=<%= movietitle.replace(/[\s]/g, '%20') %>" class="read-more-link" target="_blank"> Get a ticket! </a></p>
     <% }; %>  
     <% if (usatodayreview.length > 0) { %>
     

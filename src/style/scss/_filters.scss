@@ -4,14 +4,14 @@
   color: $dark-blue;
   cursor: pointer;
   float: left;
-  // background: none;
+  background: none;
   padding: 0.5em;
   margin-bottom: 1em;
   margin-right: 0.5em;
   text-transform: uppercase;
 
-  &.iapp-selected {
-    background: $dark-blue;
+  &.iapp-selected, &:hover {
+    background: $blue;
     color: white;
   }
 }
