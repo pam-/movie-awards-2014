@@ -43,7 +43,8 @@ define([
     events: {
       "click .modal-overlay": "removeHighlight",
       "click .iapp-filter-button": "setFilter",
-      "click .iapp-filter-button-clear": "clearFilters"
+      "click .iapp-filter-button-clear": "clearFilters",
+      // "click .button": "startApp"
       // "touchstart .modal-overlay": "removeHighlight" 
     },
 
@@ -56,10 +57,10 @@ define([
     addOne: function(movie) {
       var view = new app.views.MovieCard({model: movie});
       this.$cardWrap.append(view.render().el);
-      console.log(movie.get('intheaters'));
+      // console.log(movie.get('intheaters'));
     },
 
-    template: templates["app-view.html"], 
+    template: templates["app-view.html"],
 
     render: function() {
       this.$el.html(this.template({}));
@@ -69,8 +70,6 @@ define([
     },
 
     $cardWrap: {},
-
-    nowPlaying: [],
 
     addAll: function() {
       this.$cardWrap.empty();
@@ -99,20 +98,30 @@ define([
         });
       });
     },
+    
+    nowPlaying: {},    
 
     inTheaters: function() {
-      app.collections.playing.each(this.getTitles, this)
+      app.collections.playing.each(this.getTitles, this);
+      app.collections.playing.each(this.getDates, this);
+    },
+
+    getDates: function(obj) {
+      console.log(obj);
     },
 
     getTitles: function(obj){
       var moviesInTheater = obj.get('movies');
       // console.log(moviesInTheater)
-      _.map(moviesInTheater, function(item){
+      _.each(moviesInTheater, function(item){
         var title = this.sanitizeTitle(item.title);
-        this.nowPlaying.push(title);
+        var date = item.release_dates.theater;
+        // console.log(date)
+        this.nowPlaying[title] = date;
       }, this);
-      if (this.nowPlaying.length > 0) {
-        console.log(this.nowPlaying)
+      console.log(this.nowPlaying)
+      if (Object.keys(this.nowPlaying).length > 0) {
+        // console.log('HERE',this.nowPlaying);
         console.log('the titles are in');
         app.collections.movies.each(this.compareTitles, this);
       };
@@ -125,9 +134,11 @@ define([
     compareTitles: function(obj){
       // console.log(obj.get('movietitle'))
       // console.log(this.$cardWrap);
-      for (var i = 0; i < this.nowPlaying.length; i++) {
-        if(this.nowPlaying[i] == this.sanitizeTitle(obj.get('movietitle'))){
+      for (var title in this.nowPlaying) {
+        // console.log(title)
+        if(title == this.sanitizeTitle(obj.get('movietitle'))){
           obj.set('intheaters', true)
+          obj.set('release', this.nowPlaying[title])
           // console.log(obj.get('intheaters'));
         }
       };
@@ -235,8 +246,8 @@ define([
     template: templates["card-front.html"],
 
     initialize: function() {
-      this.listenTo(this.model, 'change', this.showDetail);
       this.model.on('change', this.render, this);
+      this.listenTo(this.model, 'change', this.showDetail);
     },
 
     addTheaterClass: function(){
@@ -254,7 +265,7 @@ define([
         this.$el.addClass(v);
         this.$el.attr( 'data-category', v);
       }, this);
-      console.log('HERE',this)
+      // console.log('HERE',this)
       return this;
     },
 
@@ -289,75 +300,71 @@ app.views.DetailCard = Backbone.View.extend({
     "click .facebook-share": "facebookShare",
     "click .twitter-share": "twitterShare"
       // "touchstart .close-card": "removeHighlight",
+  },
 
-    },
+  initialize: function() {
+    app.router.navigate("movies/" + this.model.get("rowNumber"));
+    this.listenTo(this.model, 'change', this.removeCard);
+  },
 
-    initialize: function() {
-      app.router.navigate("movie/" + this.model.get("rowNumber"));
-      this.listenTo(this.model, 'change', this.removeCard);
-    },
+  render: function() {
+    this.$el.empty();
+    this.$el.html(this.template(this.model.attributes));   
+    return this;
+  },
 
-    render: function() {
-      this.$el.empty();
-      this.$el.html(this.template(this.model.attributes));   
-      return this;
-    },
+  postRender: function(element) {
 
-    postRender: function(element) {
+    _.defer(function() {
+      $(".modal-overlay").addClass("show");
 
-      _.defer(function() {
-        $(".modal-overlay").addClass("show");
+      element.addClass("modal-show");
+    }, element);
 
-        element.addClass("modal-show");
-      }, element);
+  },
 
-    },
+  removeCard: function() {
 
-    removeCard: function() {
+    if(!this.model.get("highlight")) {
 
-      if(!this.model.get("highlight")) {
+      $(".modal-overlay").removeClass("show");
+      this.$el.removeClass("modal-show");
+      _.defer(function() { app.router.navigate("movies"); });
+      var _this = this;
+      _.delay(function() {
+        console.log("remove");
+        _this.remove();
+      }, 500);
+    }  
+  },
 
-        $(".modal-overlay").removeClass("show");
-        this.$el.removeClass("modal-show");
-        _.defer(function() { app.router.navigate("movie"); });
-        var _this = this;
-        _.delay(function() {
-          console.log("remove");
-          _this.remove();
-        }, 500);
-      }
-      
-    },
+  removeHighlight: function() {
+    this.model.set({"highlight": false});
+  },
 
+  facebookShare: function(e) {
+    Analytics.click('facebook share clicked');
 
-    removeHighlight: function() {
-      this.model.set({"highlight": false});
-    },
+    var shareURL = app.config.share_url;
+    var picture = this.model.get("basepath") + "fb-post.jpg";
+    var description = "You should probably watch… " + this.model.get("movietitle") + ", filtered just for you by @usatoday’s #2014movieguide";
 
-    facebookShare: function(e) {
-      Analytics.click('facebook share clicked');
+    if (window.FB) {
 
-      var shareURL = app.config.share_url;
-      var picture = this.model.get("basepath") + "fb-post.jpg";
-      var description = "You should probably watch… " + this.model.get("movietitle") + ", filtered just for you by @usatoday’s #2014movieguide";
+     e.preventDefault(); 
 
+     window.FB.ui({
+      method: 'feed',
+      href: window.location.href,
+      picture: "",
+      name: "2014 Oscar-nominated (and not-so-nominated) Movie Guide",
+      caption: shareURL,
+      description: description
+    }, function(response){});
 
-      if (window.FB) {
-
-       e.preventDefault(); 
-
-       window.FB.ui({
-        method: 'feed',
-        href: window.location.href,
-        picture: "",
-        name: "2014 Oscar-nominated (and not-so-nominated) Movie Guide",
-        caption: shareURL,
-        description: description
-      }, function(response){});
-
-     }
-   },
-   twitterShare: function(e) {
+   }
+  },
+  twitterShare: function(e) {
     Analytics.click('twitter share clicked');
 
     if (!isMobile) {
@@ -374,14 +381,22 @@ app.views.DetailCard = Backbone.View.extend({
 app.Router = Backbone.Router.extend({
 
   routes: {
-    "": "home",
-      "movie/:id": "highlight",    // #/1
-      
+    // "":"home",
+    "": "index",
+    "movies/:id": "highlight"    // #/1
   },
 
-  home: function() {
-     var highlightModel = _.find(app.collections.movies.models, function(model) {
+  // home: function (){
+  //   app.views.appView.$el.find(".sort-wrapper").hide();
+  //   var self = this;
+  //   $('.button').on('click', function(){
+  //     window.load = 'localhost:3000/#movies';
+  //   })
+  // },
 
+  index: function() {
+    // alert('IN THE INDEX')
+     var highlightModel = _.find(app.collections.movies.models, function(model) {
       return model.get("highlight") === true;
     });
      if(highlightModel) {
@@ -397,31 +412,17 @@ app.Router = Backbone.Router.extend({
         });
         detailModel.set({"highlight": true});
         app.views.detailView = new app.views.DetailCard({model: detailModel});
-        console.log(app.views.detailView)
         $(".iapp-page-wrap").append(app.views.detailView.render().el);
         app.views.detailView.postRender(app.views.detailView.render().$el);
       });
     }
-
   }
-
 });
-
-
-
-var allPlaying = [];
-
-function getMovies(data){
-  allPlaying.push(data)
-  console.log(allPlaying)
-}
-
-
 
 app.init = function() {
 
   require( [ 'jquery-bridget/jquery.bridget' ],
-    function() {
+      function() {
         // make Isotope a jQuery plugin
         $.bridget( 'isotope', Isotope );
         app.collections.movies = new moviesCollection();
@@ -430,13 +431,9 @@ app.init = function() {
         app.router = new app.Router();
         Backbone.history.start();
       }
-      );
+    );
+  };
 
-
-
-
-};
-
-return app;
+  return app;
 
 });

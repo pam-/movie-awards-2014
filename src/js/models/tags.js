@@ -1,5 +1,7 @@
 define([], function() {
   return [
+    "Oscar nominated",
+    "In theaters",
     "Kid at heart",
     "Musical",
     "Based on a book",
@@ -15,8 +17,6 @@ define([], function() {
     "Bro pics",
     "Chick flicks",
     "Creepy",
-    "Adrenaline rush",
-    "Oscar nominated",
-    "In theaters"
+    "Adrenaline rush"
   ]
 });
