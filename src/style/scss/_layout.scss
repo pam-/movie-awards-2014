@@ -1,4 +1,5 @@
 .iapp-page-wrap {
+  padding-top: 2em;
   margin: 0 auto;
   position: relative;
   width: 80%;
@@ -58,7 +59,36 @@
   padding: 2em;
   h3 {
     color: $medium-grey;
-    font-family: "Futura Today Bold", Arial,sans-serif;
+    font-family: "Avenir", Arial,sans-serif;
+    font-weight: bolder;
     text-align: center;
   }
 }
+
+.overlay{
+  z-index: 30;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.8);
+  visibility: visible;
+  
+  &.close{
+    visibility: hidden;
+  }
+}
+
+.iapp-info-text{
+    position: fixed;
+    width: 80%;
+    top: 50%;
+    left: 50%;
+    max-width: 900px;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 2em;
+    z-index: 40;
+    // height: 500px;
+    // left: 200px;
+    // background: rgba($red, 0.7);
+  }

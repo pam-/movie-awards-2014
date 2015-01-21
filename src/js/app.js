@@ -49,6 +49,8 @@ define([
     },
 
     initialize: function() {
+      app.router = new app.Router();
+      app.router.navigate('movies');
       this.listenTo(app.collections.movies, 'reset', this.addAll);
       this.listenTo(app.collections.playing, 'reset', this.inTheaters)
       this.render();
@@ -289,6 +291,31 @@ define([
     }
   });
 
+app.views.HomeView = Backbone.View.extend({
+  el: ".iapp-info",
+ 
+  template: templates["info-credits.html"],
+
+  events: {
+    "click .close-card": "removeInfo",
+    "click .overlay": "removeInfo"
+  },
+
+  initialize: function() {
+    this.render();
+  },
+
+  render: function(){
+    this.$el.empty();
+    this.$el.html(this.template());
+  },
+
+  removeInfo: function(){
+    console.log('this will close')
+    this.remove();
+      _.defer(function() { app.router.navigate("movies"); });
+  }
+});
 
 app.views.DetailCard = Backbone.View.extend({
   tagName: "div",
@@ -381,21 +408,13 @@ app.views.DetailCard = Backbone.View.extend({
 app.Router = Backbone.Router.extend({
 
   routes: {
-    // "":"home",
-    "": "index",
-    "movies/:id": "highlight"    // #/1
+    "":"home",
+    // "movies": "index",
+    "movies/:id": "highlight",   // #/1
+    "*default": "home"
   },
 
-  // home: function (){
-  //   app.views.appView.$el.find(".sort-wrapper").hide();
-  //   var self = this;
-  //   $('.button').on('click', function(){
-  //     window.load = 'localhost:3000/#movies';
-  //   })
-  // },
-
-  index: function() {
-    // alert('IN THE INDEX')
+  home: function() {
      var highlightModel = _.find(app.collections.movies.models, function(model) {
       return model.get("highlight") === true;
     });
@@ -428,6 +447,7 @@ app.init = function() {
         app.collections.movies = new moviesCollection();
         app.collections.playing = new playingCollection();
         app.views.appView = new app.views.AppView();
+        app.views.homeView = new app.views.HomeView();
         app.router = new app.Router();
         Backbone.history.start();
       }

@@ -6,7 +6,7 @@ this["JST"]["app-view.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<div class="info">\t\n\t<h1 class="iapp-page-header">2014 Oscar nominated (and not-so-nominated) Movie Guide</h1>\n\t<p class="iapp-page-chatter">Oscar season is officially here, and if you’re like some of us wannabe movie buffs, you may have let a few of 2014’s most notable movies slip through the cracks. USA TODAY\'s 2014 Movie Guide to the rescue. Just click the filters and get as specific as you want. Who knows? Your new favorite flick may be out there and you didn’t even know it. If you want to stick to award-worthy films, click “Oscar nominated.”</p>\n\t<p class="time-stamp"></p>\n\t<button class="button">test test test</button>\n</div>\n\n<div class="sort-wrapper">\n\t<div class="iapp-filters-wrap"></div> \n\t<div id="card-wrap"></div>\n</div>\n\n<div class="info">\n\t<p class="iapp-credits"><strong>Credits:</strong> Ryan Carey-Mahoney, Mitchell Thorson, Lori Grisham, USA TODAY</p>\n</div>\n\n<div class="modal-overlay"></div>';
+__p += '<h2 class="iapp-page-header"> SELECT FILTERS: </h2>\n<div class="sort-wrapper">\n\t<div class="iapp-filters-wrap"></div> \n\t<div id="card-wrap"></div>\n</div>\n\n<div class="modal-overlay"></div>';
 
 }
 return __p
@@ -25,11 +25,11 @@ __p += '  <div class="card card-detail">\n\n    <div class="close-card"></div>\n
 ((__t = ( summary )) == null ? '' : __t) +
 '</p>\n    ';
  if (intheaters) { ;
-__p += ' \n    <p> Currently in theaters </p>\n    ';
+__p += ' \n    <p class="iapp-intheaters"> Currently in theaters </p>\n    ';
  }; ;
 __p += ' \n    ';
  if (release) { ;
-__p += '\n    <p> Release Date: <smalll> ' +
+__p += '\n    <p class="iapp-release"> Release Date: <smalll> ' +
 ((__t = ( release )) == null ? '' : __t) +
 ' </smalll>  </p>\n    ';
  }; ;
@@ -85,6 +85,16 @@ __p += '   <div class="category-bar">\n  \n   </div>\n   <div class="title-overl
 __p += '" alt="' +
 ((__t = ( movietitle)) == null ? '' : __t) +
 '">\n';
+
+}
+return __p
+};
+
+this["JST"]["info-credits.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '<div class="iapp-info-text">\n\t<div class="close-card"></div>\n\t<h1 class="iapp-page-header">2014 Oscar nominated (and not-so-nominated) Movie Guide</h1>\n\n\t<p class="iapp-page-chatter">Oscar season is officially here, and if you’re like some of us wannabe movie buffs, you may have let a few of 2014’s most notable movies slip through the cracks. USA TODAY\'s 2014 Movie Guide to the rescue. Just click the filters and get as specific as you want. Who knows? Your new favorite flick may be out there and you didn’t even know it. If you want to stick to award-worthy films, click “Oscar nominated.”</p>\n\t<p class="time-stamp"></p>\n\n\t<p class="iapp-credits"><strong>Credits:</strong> Ryan Carey-Mahoney, Mitchell Thorson, Lori Grisham, USA TODAY</p>\n</div>\n<div class="overlay"></div>';
 
 }
 return __p
