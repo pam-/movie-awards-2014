@@ -103,11 +103,6 @@ define([
 
     inTheaters: function() {
       app.collections.playing.each(this.getTitles, this);
-      app.collections.playing.each(this.getDates, this);
-    },
-
-    getDates: function(obj) {
-      console.log(obj);
     },
 
     getTitles: function(obj){
@@ -313,8 +308,9 @@ app.views.HomeView = Backbone.View.extend({
 
   removeInfo: function(){
     console.log('this will close')
-    this.remove();
+    this.$el.fadeOut('slow');
     _.defer(function() { app.router.navigate("movies"); });
+    this.remove();
   },
 
   filtersTemplate: templates["tags.html"],
@@ -327,20 +323,18 @@ app.views.HomeView = Backbone.View.extend({
     var firstButton = this.$el.find(".iapp-filter-button").eq(0);
     var secButton = this.$el.find(".iapp-filter-button").eq(5);
     var thirdButton = this.$el.find(".iapp-filter-button").eq(2);
-    var clearButton = this.$el.find(".iapp-filter-button-clear");
+    var start = this.$el.find(".get-started");
     var guidelinesBegin = this.$el.find("p");
     var guidelinesEnd = this.$el.find(".js-span");
-    setTimeout( function(){
-      guidelinesBegin.addClass('show')
-      firstButton.addClass('iapp-selected');
-      (clearButton).addClass('show')
-    }, 2000);
+    setTimeout( function() { firstButton.addClass('iapp-selected')}, 1000);
+    setTimeout(function() { guidelinesEnd.addClass('show')}, 2000);
     setTimeout(function(){
-      guidelinesEnd.addClass('show')
       secButton.addClass('iapp-selected');
       thirdButton.addClass('iapp-selected');
-    }, 3000);
-  
+    }, 2400);
+    setTimeout(function(){
+      start.addClass('selected')
+    }, 3000)
   }
 });
 

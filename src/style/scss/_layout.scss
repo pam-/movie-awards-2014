@@ -86,11 +86,32 @@
   // transform: translate(-50%, -50%);
   background: #fff;
   padding: 2em;
+  padding-top: 0.5em;
   z-index: 40;
   // height: 500px;
   // left: 200px;
   // background: rgba($red, 0.7);
-  .js-span, p{
+  h2{
+    margin: 0;
+  }
+  .iapp-demo{
+    padding: 1em;
+    background: #efefef;
+    &:after{
+      display: block;
+      content: " ";
+      clear: both;
+    }
+  }
+  .demo{
+    // display: none;
+    font-size: 1.3em;
+    transition: all 500ms ease;
+    // &.show{
+    //   display: block;
+    // }
+  }
+  .js-span{
     display: none;
     transition: all 500ms ease;
     &.show{

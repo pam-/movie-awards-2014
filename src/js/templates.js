@@ -96,7 +96,7 @@ this["JST"]["demo-credits.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<div class="iapp-info-text">\n\t<div class="close-card"></div>\n\n\t<h2 class="iapp-page-header"> 2014 Oscar nominated (and not-so-nominated) Movie Guide </h2>\n<p class="iapp-page-chatter">Filter movies by selecting <b>one</b> <span class="js-span"> or <b>multiple</b> categories <span></p>\n\t\n\t<div class="iapp-filters-wrap"></div> \n\t<div class="iapp-filter-button get-started"> Get Started! </div>\n\n\t<p class="time-stamp"></p>\n\n</div>\n<div class="overlay"></div>';
+__p += '<div class="iapp-info-text">\n\t<div class="close-card"></div>\n\n\t<h2 class="iapp-page-header"> 2014 Oscar nominated (and not-so-nominated) Movie Guide </h2>\n\t<p class="iapp-page-chatter">Oscar season is officially here, and if you’re like some of us wannabe movie buffs, you may have let a few of 2014’s most notable movies slip through the cracks. USA TODAY\'s 2014 Movie Guide to the rescue. Your new favorite flick may be out there and you didn’t even know it.</p>\n\t<div class="iapp-demo">\n\t<p class="demo"><b>Filter</b> movies by selecting <b>one</b> <span class="js-span"> or <b>multiple</b> categories <span></p>\n\t\n\t<div class="iapp-filters-wrap"></div> \n\t<div class="iapp-filter-button get-started"> Get Started! </div>\n\t\t\n\n\t</div>\n\n\t<p class="time-stamp"></p>\n\n</div>\n<div class="overlay"></div>';
 
 }
 return __p
