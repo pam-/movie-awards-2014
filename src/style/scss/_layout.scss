@@ -133,17 +133,19 @@
     left: 0; right: 0;
     width: 300px;
     margin: 0 auto;
+    font-size: 1.5em;
+    font-weight: bolder;
     text-align: center;
     top: 325px;
     padding: 2em;
-    background: rgba($red, 1);
+    background: rgba($red, 0.8);
     color: white;
     transition: all 300ms;
     display: none;
     &:hover{
       color: white;
       border: solid 1px $red;
-      background: rgba($red, 0.8);
+      background: rgba($red, 1);
     }
     &.show{
       display: block;
