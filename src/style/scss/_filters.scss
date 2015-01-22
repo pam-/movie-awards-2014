@@ -5,11 +5,11 @@
   cursor: pointer;
   float: left;
   background: none;
+  // font-size: 0.9em;
   padding: 0.5em;
   margin-bottom: 1em;
   margin-right: 0.5em;
   text-transform: uppercase;
-
   &.iapp-selected, &:hover {
     background: $blue;
     color: white;

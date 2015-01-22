@@ -323,7 +323,7 @@ app.views.HomeView = Backbone.View.extend({
     var firstButton = this.$el.find(".iapp-filter-button").eq(0);
     var secButton = this.$el.find(".iapp-filter-button").eq(5);
     var thirdButton = this.$el.find(".iapp-filter-button").eq(2);
-    var start = this.$el.find(".get-started");
+    var startButton = this.$el.find(".get-started");
     var guidelinesBegin = this.$el.find("p");
     var guidelinesEnd = this.$el.find(".js-span");
     setTimeout( function() { firstButton.addClass('iapp-selected')}, 1000);
@@ -333,8 +333,8 @@ app.views.HomeView = Backbone.View.extend({
       thirdButton.addClass('iapp-selected');
     }, 2400);
     setTimeout(function(){
-      start.addClass('selected')
-    }, 3000)
+      startButton.addClass('show');
+    }, 3000);
   }
 });
 
