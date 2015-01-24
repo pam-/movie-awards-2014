@@ -10,11 +10,8 @@
     <p class="iapp-summary"><%= summary %> 
     <% if (release) { %> 
       <span> Release date : <%= release %> </span>
-    <% }; %> 
     </p>
-
-    <% if (intheaters) { %>
-    <p class="iapp-get-ticket"> <a href="http://www.fandango.com/search/?q=<%= movietitle.replace(/[\s]/g, '%20') %>" class="read-more-link" target="_blank"> Get a ticket! </a></p>
+    <p class="iapp-get-ticket"> <a href="http://www.fandango.com/search/?q=<%= movietitle.replace(/[\s]/g, '%20') %>" class="read-more-link" target="_blank"> Get your ticket! </a></p>
     <% }; %>  
     <% if (usatodayreview.length > 0) { %>
     

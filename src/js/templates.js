@@ -27,13 +27,9 @@ __p += '  <div class="card card-detail">\n\n    <div class="close-card"></div>\n
  if (release) { ;
 __p += ' \n      <span> Release date : ' +
 ((__t = ( release )) == null ? '' : __t) +
-' </span>\n    ';
- }; ;
-__p += ' \n    </p>\n\n    ';
- if (intheaters) { ;
-__p += '\n    <p class="iapp-get-ticket"> <a href="http://www.fandango.com/search/?q=' +
+' </span>\n    </p>\n    <p class="iapp-get-ticket"> <a href="http://www.fandango.com/search/?q=' +
 ((__t = ( movietitle.replace(/[\s]/g, '%20') )) == null ? '' : __t) +
-'" class="read-more-link" target="_blank"> Get a ticket! </a></p>\n    ';
+'" class="read-more-link" target="_blank"> Get your ticket! </a></p>\n    ';
  }; ;
 __p += '  \n    ';
  if (usatodayreview.length > 0) { ;
