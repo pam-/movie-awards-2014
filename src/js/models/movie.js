@@ -8,9 +8,6 @@ define([
       highlight: false,
       intheaters: false,
       release: null
-    }, 
-    initialize: function() {
-      // this.attributes.category = this.attributes.category.split(", ");
     }
   });
 })
